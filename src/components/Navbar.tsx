@@ -1,4 +1,12 @@
-import { Download, Github, Instagram, Linkedin, Mail, Menu, X } from "lucide-react";
+import {
+  Download,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  Menu,
+  X,
+} from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { PROFILE } from "../lib/data";
 import { getActiveSection, scrollToId } from "../lib/scroll";
@@ -40,11 +48,13 @@ export function Navbar() {
   }, [ids]);
 
   return (
-    <header className="fixed left-0 top-0 z-40 w-full">
+    <header className="fixed sticky left-0 top-0 z-40 w-full">
       <div
         className={[
           "transition-all duration-300",
-          solid ? "border-b border-white/10 bg-bg-950/65 backdrop-blur" : "bg-transparent",
+          solid
+            ? "border-b border-white/10 bg-bg-950/65 backdrop-blur"
+            : "bg-transparent",
         ].join(" ")}
       >
         <div className="container-px flex h-16 items-center justify-between">
@@ -66,7 +76,9 @@ export function Navbar() {
                 onClick={() => scrollToId(s.id)}
                 className={[
                   "text-sm transition-colors",
-                  active === s.id ? "text-white" : "text-white/70 hover:text-white",
+                  active === s.id
+                    ? "text-white"
+                    : "text-white/70 hover:text-white",
                 ].join(" ")}
               >
                 <span className="relative">
@@ -104,7 +116,9 @@ export function Navbar() {
       <div
         className={[
           "md:hidden transition-all duration-300",
-          open ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0 pointer-events-none",
+          open
+            ? "max-h-[520px] opacity-100"
+            : "max-h-0 opacity-0 pointer-events-none",
         ].join(" ")}
       >
         <div className="border-b border-white/10 bg-bg-950/80 backdrop-blur">
@@ -120,23 +134,43 @@ export function Navbar() {
                   }}
                   className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left"
                 >
-                  <span className={active === s.id ? "text-white" : "text-white/80"}>{s.label}</span>
+                  <span
+                    className={active === s.id ? "text-white" : "text-white/80"}
+                  >
+                    {s.label}
+                  </span>
                   <span className="text-blueglow-400/80">→</span>
                 </button>
               ))}
             </div>
 
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <a href={PROFILE.github} className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow" aria-label="GitHub">
+              <a
+                href={PROFILE.github}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
+                aria-label="GitHub"
+              >
                 <Github className="h-5 w-5" />
               </a>
-              <a href={PROFILE.linkedin} className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow" aria-label="LinkedIn">
+              <a
+                href={PROFILE.linkedin}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href={`mailto:${PROFILE.email}`} className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow" aria-label="Email">
+              <a
+                href={`mailto:${PROFILE.email}`}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
+                aria-label="Email"
+              >
                 <Mail className="h-5 w-5" />
               </a>
-              <a href={PROFILE.instagram} className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow" aria-label="Instagram">
+              <a
+                href={PROFILE.instagram}
+                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
+                aria-label="Instagram"
+              >
                 <Instagram className="h-5 w-5" />
               </a>
 

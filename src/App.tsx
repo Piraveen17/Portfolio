@@ -13,12 +13,15 @@ import { ContactCard } from "./components/ContactCard";
 import { Footer } from "./components/Footer";
 import { motion } from "framer-motion";
 import { RESEARCH } from "./lib/data";
+import { Analytics } from "@vercel/analytics/react";
 
 export function App() {
   return (
     <div className="min-h-screen bg-bg-950 text-white font-body">
       <ScrollProgress />
       <SiteBackground />
+      <Analytics />
+
       <Navbar />
       <main>
         <Hero />
@@ -188,7 +191,6 @@ export function App() {
 
         <Footer />
       </main>
-
       <BackToTop />
     </div>
   );
