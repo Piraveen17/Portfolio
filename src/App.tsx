@@ -14,6 +14,7 @@ import { Footer } from "./components/Footer";
 import { motion } from "framer-motion";
 import { RESEARCH } from "./lib/data";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 export function App() {
   return (
@@ -21,6 +22,7 @@ export function App() {
       <ScrollProgress />
       <SiteBackground />
       <Analytics />
+      <SpeedInsights />
 
       <Navbar />
       <main>
