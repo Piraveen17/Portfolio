@@ -1,12 +1,10 @@
-import { label } from "framer-motion/client";
-
 export const PROFILE = {
   brand: "piraveen",
   name: "Sasikaran Piraveen",
-  title: "BSc (Hons) CS (Reading)",
-  tagline: "Full-Stack Developer delivering reliable, user-focused products.",
+  title: "BSc (Hons) Computer Science (Reading)",
+  tagline: "Frontend and full-stack developer focused on clean UI and reliable systems.",
   currently:
-    "Currently building scalable full-stack systems and exploring AI research.",
+    "Building production-ready web apps and exploring deep learning for real-world impact.",
   location: "Jaffna District, Northern Province, Sri Lanka",
   email: "piraveen1727@gmail.com",
   github: "https://github.com/Piraveen17",
@@ -17,211 +15,200 @@ export const PROFILE = {
 
 export const PROJECTS = [
   {
-    title: "Car Rental Management System",
-    year: "2026",
-    tagline:
-      "Enterprise-grade booking logic with strict availability control and role-based access.",
-    description:
-      "Role-based booking system with strict availability rules and premium UI.",
-    accent: "cyan",
-    stack: ["React", "TypeScript", "Supabase", "Tailwind", "RLS"],
-    github: "https://github.com/Piraveen17/car_rental",
-    image: "/projects/car-rental.png",
-  },
-  {
-    title: "nextjs-betterauth-boilerplate",
+    title: "Olirsuite - Company Management System",
     year: "2025",
     tagline:
-      "Production-ready authentication architecture with secure role-based routing.",
+      "Responsive company management UI with finance tracking and API integration.",
     description:
-      "Production-ready authentication starter with clean architecture.",
-    accent: "red",
-    stack: ["Next.js", "BetterAuth", "TypeScript", "RBAC"],
-    github: "https://github.com/Piraveen17/nextjs-betterauth-boilerplate",
-    image: "/projects/betterauth.png",
+      "Frontend development, transaction tracking, and backend API integration.",
+    accent: "cyan",
+    stack: ["Next.js", "TypeScript", "shadcn/ui", "MongoDB"],
+    github: "https://github.com/Piraveen17",
+    image: "/projects/olirsuite.svg",
   },
   {
-    title: "Weather App",
+    title: "CheatShield - Exam Environment Control System",
+    year: "2026",
+    tagline:
+      "Allowlist-based exam control with secure policy sync and client validation.",
+    description:
+      "Policy sync, secure registration, and API flow validation.",
+    accent: "red",
+    stack: ["Next.js", "TypeScript", "MongoDB", "Python", "Postman"],
+    github: "https://github.com/Piraveen17",
+    image: "/projects/cheatshield.svg",
+  },
+  {
+    title: "Car Rental Management System",
+    year: "2025",
+    tagline:
+      "Full-stack booking platform with auth, filters, and availability checks.",
+    description:
+      "Booking validation logic with scalable database design and clean UI.",
+    accent: "cyan",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui"],
+    github: "https://github.com/Piraveen17",
+    image: "/projects/car-rental-system.svg",
+  },
+  {
+    title: "JeyaFoods - Food Ordering System",
+    year: "2026",
+    tagline:
+      "Responsive menu UI with search and filters for fast discovery.",
+    description:
+      "Reusable components with consistent UI styling across customer pages.",
+    accent: "cyan",
+    stack: ["Next.js", "TypeScript", "MongoDB"],
+    github: "https://github.com/Piraveen17",
+    image: "/projects/jeyafoods.svg",
+  },
+  {
+    title: "Resource Hub Management System",
     year: "2024",
     tagline:
-      "High-performance API-driven UI with modern motion and clean state management.",
+      "Scheduling calendar UI with booking workflows and validation.",
     description:
-      "Modern weather UI with fast API fetch and smooth interactions.",
-    accent: "cyan",
-    stack: ["React", "Vite", "API", "Framer Motion"],
-    github: "https://github.com/Piraveen17/Weather-App",
-    image: "/projects/weather.png",
+      "Availability views and create/update/cancel booking flows.",
+    accent: "red",
+    stack: ["HTML", "Tailwind CSS", "JavaScript", "PHP"],
+    github: "https://github.com/Piraveen17",
+    image: "/projects/resource-hub.svg",
   },
 ];
 
 export const SKILLS = [
-  { label: "Html", group: "Frontend" },
-  { label: "Css", group: "Frontend" },
-  { label: "JavaScript", group: "Frontend" },
-  { label: "React", group: "Frontend" },
-  { label: "TypeScript", group: "Frontend" },
-  { label: "TailwindCSS", group: "Frontend" },
+  { label: "Java", group: "Programming" },
+  { label: "Python", group: "Programming" },
+  { label: "C", group: "Programming" },
+  { label: "C++", group: "Programming" },
+  { label: "PHP", group: "Programming" },
+  { label: "JavaScript", group: "Programming" },
+  { label: "TypeScript", group: "Programming" },
 
-  { label: "Node.js", group: "Backend" },
-  { label: "NestJS", group: "Backend" },
-  { label: "REST APIs", group: "Backend" },
-  { label: "Auth / RBAC", group: "Backend" },
-  { label: "Java", group: "Backend" },
-  { label: "Php", group: "Backend" },
+  { label: "HTML", group: "Web Development" },
+  { label: "CSS", group: "Web Development" },
+  { label: "Tailwind CSS", group: "Web Development" },
+  { label: "React.js", group: "Web Development" },
 
-  { label: "NextJs", group: "Framework" },
+  { label: "Next.js", group: "Frameworks" },
 
-  { label: "Python", group: "AI / ML" },
-  { label: "PyTorch", group: "AI / ML" },
-  { label: "Deep Learning", group: "AI / ML" },
+  { label: "MySQL", group: "Databases" },
+  { label: "MongoDB", group: "Databases" },
+  { label: "PostgreSQL", group: "Databases" },
 
-  { label: "MySQL", group: "Database" },
-  { label: "PostgreSQL", group: "Database" },
-  { label: "MongoDB", group: "Database" },
-  { label: "Git", group: "Tools" },
-  { label: "Docker", group: "Tools" },
-  { label: "Postman", group: "Tools" },
-  { label: "Linux", group: "Tools" },
+  { label: "Visual Studio", group: "Tools & IDEs" },
+  { label: "IntelliJ IDEA", group: "Tools & IDEs" },
+  { label: "MATLAB", group: "Tools & IDEs" },
+
+  { label: "Canva", group: "Editing & Design" },
 ];
 
 export const EXPERIENCE = [
   {
-    role: "Practical Assistant — External Certificate Courses in Computing (Python for Problem Solving)",
-    org: "University of Jaffna • Department of Computer Science • Part-time • On-site",
-    period: "Feb 2026 – Present",
+    role: "Practical Assistant, Python for Problem Solving",
+    org: "Department of Computer Science, Faculty of Science, University of Jaffna",
+    period: "2025, 2026",
     bullets: [
-      "Support students in hands-on Python laboratory sessions.",
-      "Provide guidance on debugging, error resolution, and applying programming concepts.",
-      "Mentor learners to improve problem-solving and practical coding confidence.",
-    ],
-  },
-  {
-    role: "Practical Assistant — External Certificate Courses in Computing (Python for Problem Solving)",
-    org: "University of Jaffna • Department of Computer Science • On-site",
-    period: "Feb 2025 – Apr 2025",
-    bullets: [
-      "Assisted students in Python practical sessions with debugging and troubleshooting.",
-      "Supported course facilitators by ensuring smooth lab execution and activity flow.",
-      "Helped students understand practical applications of Python programming concepts.",
-    ],
-  },
-  {
-    role: "Startup-style Project Builder (Full-stack)",
-    org: "Personal + team projects",
-    period: "2024 – Present",
-    bullets: [
-      "Build product-like systems with premium UI, clean architecture, and reliable logic.",
-      "Focus on production patterns: auth, roles, validation, maintainability, and performance.",
+      "Supported hands-on Python labs and guided students through exercises.",
+      "Assisted with debugging, troubleshooting, and core programming concepts.",
+      "Helped maintain smooth lab sessions and learner confidence.",
     ],
   },
 ];
 
 export const RESEARCH = [
   {
-    title: "BSc (Hons) CS (Reading)",
+    title: "Enhancing Deepfake Detection",
     description:
-      "A light research showcase section — add your titles, datasets, and results here.",
-    tags: ["AI/ML", "Systems", "Optimization"],
+      "Individual research project developing deep learning models to improve deepfake detection accuracy.",
+    tags: ["Deep Learning", "PyTorch", "Python"],
   },
 ];
 
 export const ACHIEVEMENTS = [
   {
-    title: "Leadership — Batch Representative (UoJ)",
-    desc: "Coordinated batch initiatives (t-shirts) and managed logistics for a ~260-student trip; acted as student–faculty liaison.",
+    title: "IEEE Xtreme 17.0",
+    desc: "International programming competition participation (2023).",
   },
   {
-    title: "Teaching Support — Practical Assistant",
-    desc: "Guided students in Python labs with debugging, troubleshooting, and practical problem solving.",
+    title: "CodeStorm 2.0 - Yarl IT Hub",
+    desc: "National hackathon participation (2024).",
   },
   {
-    title: "Certifications (Web + Python)",
-    desc: "Completed structured learning via edX, University of Moratuwa, IEEE, and Sololearn.",
-  },
-  {
-    title: "Basketball",
-    desc: "Team sport discipline — consistency, teamwork, and resilience under pressure.",
+    title: "UOJ Coders V 4.0",
+    desc: "University of Jaffna hackathon participation (2025).",
   },
 ];
 
 export const EDUCATION = [
   {
     school: "University of Jaffna",
-    program: "BSc (Hons) in Computer Science (Reading)",
-    period: "Sep 2022 – Present • Expected Dec 2026",
+    program:
+      "BSc (Hons) in Computer Science (Reading) - OGPA 3.89/4.0 (73/120 credits)",
+    period: "Nov 2022 - Nov 2026",
   },
   {
-    school: "Hartley College",
-    program: "Secondary Education • Basketball",
-    period: "Dec 2011 – Oct 2020",
+    school: "J/ Hartley College",
+    program:
+      "Physical Science - G.C.E. O/L: 7A, 2B (2017). G.C.E. A/L: A, B, C; Z-score 1.3841 (2020)",
+    period: "Dec 2011 - Oct 2020",
   },
 ];
 
 export const CERTIFICATIONS = [
   {
-    title: "Python Basics for Data Science",
-    issuer: "edX",
-    issued: "Jun 2024",
+    title: "Web Design for Beginners",
+    issuer: "University of Moratuwa (CODL)",
+    issued: "2024",
   },
   {
-    title: "Web Design for Beginners",
-    issuer: "University of Moratuwa",
-    issued: "Mar 2024",
+    title: "Python for Beginners",
+    issuer: "University of Moratuwa (CODL)",
+    issued: "2023",
   },
   {
     title: "Introduction to Web Development with HTML5, CSS3, and JavaScript",
     issuer: "edX",
-    issued: "Mar 2024",
+    issued: "2024",
   },
-  { title: "IEEEXtreme 17.0", issuer: "IEEE", issued: "Dec 2023" },
-  { title: "Introduction to Python", issuer: "Sololearn", issued: "Dec 2023" },
-  { title: "Introduction to HTML", issuer: "Sololearn", issued: "Sep 2023" },
   {
-    title: "Python for Beginners",
-    issuer: "University of Moratuwa",
-    issued: "Aug 2023",
+    title: "Python Basics for Data Science",
+    issuer: "edX",
+    issued: "2024",
+  },
+  {
+    title: "Introduction to HTML",
+    issuer: "Sololearn",
+    issued: "2023",
+  },
+  {
+    title: "Introduction to Python",
+    issuer: "Sololearn",
+    issued: "2023",
   },
 ];
 
 export const VOLUNTEERING = [
   {
-    role: "3rd Year Batch Representative",
-    org: "University of Jaffna",
-    period: "Jan 2025 – Dec 2025",
+    role: "3rd Year Representative",
+    org: "Faculty of Science, University of Jaffna",
+    period: "Jan 2025 - Dec 2025",
     bullets: [
-      "Coordinated design and printing of custom batch t-shirts, strengthening batch unity.",
-      "Organized and led a batch trip to Hanthana, managing logistics and activities for ~260 participants.",
-      "Acted as a liaison between students and faculty, improving engagement and addressing concerns.",
+      "Represented the batch and supported coordination with faculty members.",
     ],
   },
   {
     role: "Editor",
-    org: "Leo Club of Nallur",
-    period: "Aug 2024 – Present",
+    org: "Leo Club of Nallur (Leo District 306 D12, MD 306)",
+    period: "Aug 2024 - Present",
     bullets: [
-      "Supported club communication/content for activities and initiatives.",
-    ],
-  },
-  {
-    role: "Student Member",
-    org: "IEEE Student Branch, University of Jaffna",
-    period: "May 2023 – May 2024",
-    bullets: [
-      "Participated in student-branch activities and technical community events.",
-    ],
-  },
-  {
-    role: "Member",
-    org: "CompSoc-UOJ",
-    period: "Dec 2022 – Present",
-    bullets: [
-      "Active member in computing society events and student tech community.",
+      "Supported club communications and content updates for activities.",
     ],
   },
 ];
 
-export const LANGUAGES = [
-  { name: "Tamil", level: "Native / Bilingual" },
-  { name: "English", level: "Intermediate" },
-  { name: "Sinhala", level: "Basic" },
+export const HIGHLIGHTS = [
+  { label: "Current OGPA", value: "3.89/4.0 (73/120 credits)" },
+  { label: "G.C.E. O/L", value: "7A, 2B (2017)" },
+  { label: "G.C.E. A/L", value: "A, B, C; Z-score 1.3841 (2020)" },
 ];

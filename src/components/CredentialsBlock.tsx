@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BadgeCheck } from "lucide-react";
-import { CERTIFICATIONS, EDUCATION, LANGUAGES, VOLUNTEERING } from "../lib/data";
+import { CERTIFICATIONS, EDUCATION, HIGHLIGHTS, VOLUNTEERING } from "../lib/data";
 import { OrgMark } from "./OrgMark";
 
 function Card({ children }: { children: React.ReactNode }) {
@@ -8,7 +8,11 @@ function Card({ children }: { children: React.ReactNode }) {
 }
 
 function SubTitle({ children }: { children: React.ReactNode }) {
-  return <h3 className="display-text text-base font-semibold tracking-tight">{children}</h3>;
+  return (
+    <h3 className="display-text text-base font-semibold tracking-tight">
+      {children}
+    </h3>
+  );
 }
 
 export function CredentialsBlock() {
@@ -27,12 +31,17 @@ export function CredentialsBlock() {
             <SubTitle>Education</SubTitle>
             <div className="mt-4 space-y-3">
               {EDUCATION.map((e) => (
-                <div key={e.school} className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                <div
+                  key={e.school}
+                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"
+                >
                   <OrgMark org={e.school} />
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">{e.school}</p>
+                      <p className="text-sm font-medium text-white/90">
+                        {e.school}
+                      </p>
                       <span className="text-xs text-white/55">{e.period}</span>
                     </div>
                     <p className="mt-1 text-sm text-white/75">{e.program}</p>
@@ -42,14 +51,14 @@ export function CredentialsBlock() {
             </div>
 
             <div className="mt-6">
-              <SubTitle>Languages</SubTitle>
+              <SubTitle>Academic Highlights</SubTitle>
               <div className="mt-3 flex flex-wrap gap-2">
-                {LANGUAGES.map((l) => (
+                {HIGHLIGHTS.map((item) => (
                   <span
-                    key={l.name}
+                    key={item.label}
                     className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-white/80"
                   >
-                    <span className="text-white/90">{l.name}</span> • {l.level}
+                    <span className="text-white/90">{item.label}</span> - {item.value}
                   </span>
                 ))}
               </div>
@@ -77,7 +86,9 @@ export function CredentialsBlock() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-start justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">{c.title}</p>
+                      <p className="text-sm font-medium text-white/90">
+                        {c.title}
+                      </p>
                       <span className="text-xs text-white/55">{c.issued}</span>
                     </div>
                     <p className="mt-1 text-sm text-white/70">{c.issuer}</p>
@@ -99,12 +110,17 @@ export function CredentialsBlock() {
           <SubTitle>Leadership & Volunteering</SubTitle>
           <div className="mt-4 grid gap-3">
             {VOLUNTEERING.map((v) => (
-              <div key={`${v.role}-${v.period}`} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-4">
+              <div
+                key={`${v.role}-${v.period}`}
+                className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-4"
+              >
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <div className="flex items-start gap-3">
                     <OrgMark org={v.org} />
                     <div>
-                      <p className="text-sm font-semibold text-white/90">{v.role}</p>
+                      <p className="text-sm font-semibold text-white/90">
+                        {v.role}
+                      </p>
                       <p className="text-sm text-white/70">{v.org}</p>
                     </div>
                   </div>

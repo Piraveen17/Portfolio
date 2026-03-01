@@ -198,15 +198,16 @@ export function Hero() {
                         alt="Profile"
                         className="h-full w-full object-cover opacity-95"
                         loading="eager"
+                        decoding="async"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-bg-950/60 via-transparent to-transparent" />
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="rounded-2xl border border-white/10 bg-bg-950/55 p-3 backdrop-blur">
                           <p className="text-sm font-medium text-white/90">
-                            Full-stack • Internship-ready
+                            Full-stack - Internship-ready
                           </p>
                           <p className="text-sm muted">
-                            UI polish • clean architecture • reliable delivery
+                            UI polish - clean architecture - reliable delivery
                           </p>
                         </div>
                       </div>

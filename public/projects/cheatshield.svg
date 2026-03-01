@@ -1,0 +1,15 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1020" />
+      <stop offset="55%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#g)" />
+  <rect x="90" y="90" width="1020" height="420" rx="26" fill="#0B1325" fill-opacity="0.6" stroke="#F87171" stroke-opacity="0.35" />
+  <path d="M600 180 L760 240 V330 C760 390 700 440 600 480 C500 440 440 390 440 330 V240 L600 180 Z" fill="#111827" stroke="#F87171" stroke-opacity="0.6" stroke-width="3" />
+  <path d="M600 230 L680 270 V320 C680 350 640 380 600 400 C560 380 520 350 520 320 V270 L600 230 Z" fill="#DC2626" fill-opacity="0.25" />
+  <text x="140" y="140" fill="#F8FAFC" font-size="34" font-family="Arial, sans-serif" font-weight="700">CheatShield</text>
+  <text x="140" y="180" fill="#FCA5A5" font-size="18" font-family="Arial, sans-serif">Exam Environment Control System</text>
+</svg>

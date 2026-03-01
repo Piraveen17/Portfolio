@@ -31,7 +31,7 @@ export function App() {
         <Section
           id="about"
           title="ABOUT"
-          subtitle="Startup mindset, strong UI, and production-ready engineering."
+          subtitle="Focused on clean UI, reliable systems, and research-driven curiosity."
           tone="soft"
         >
           <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
@@ -43,27 +43,22 @@ export function App() {
               className="card card-hover p-6"
             >
               <p className="text-sm leading-7 text-white/80">
-                I’m a Computer Science undergraduate with a strong
-                startup-builder mindset. I enjoy turning ideas into real,
-                production-ready features—quickly and thoughtfully. My focus is
-                on building clean user interfaces, designing solid system
-                architectures, and ensuring reliability at scale. I approach
-                development with practicality and long-term thinking: clean
-                code, maintainable structure, and performance-aware design.
-                Beyond core software engineering, I explore AI and systems
-                concepts when they meaningfully enhance product
-                outcomes—improving efficiency, robustness, or automation.
-                Currently, I’m deepening my understanding of Artificial
-                Intelligence and Deep Learning to build smarter, scalable
-                products that solve real-world problems..
+                I am a Computer Science undergraduate (BSc Hons, reading) with a
+                strong focus on building clean user interfaces and production-ready
+                systems. I enjoy shipping reliable full-stack features, from UI
+                design to data validation and API integration. Alongside product
+                work, I am interested in deep learning research, especially
+                computer vision topics like deepfake detection. I value clear
+                architecture, thoughtful UX decisions, and performance-aware
+                implementation.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {[
-                  "Frontend",
+                  "UI/UX",
                   "Full-stack",
-                  "AI/ML (light)",
-                  "Clean UI",
-                  "System thinking",
+                  "Deep Learning",
+                  "System Design",
+                  "Frontend",
                 ].map((t) => (
                   <span
                     key={t}
@@ -77,10 +72,10 @@ export function App() {
 
             <div className="grid gap-4">
               {[
-                { k: "Focus", v: "Frontend / Full-stack (job-ready)" },
-                { k: "Strength", v: "Premium UI + reliable logic" },
-                { k: "Also", v: "AI + Systems research interest" },
-                { k: "Sports", v: "Basketball (teamwork & discipline)" },
+                { k: "Focus", v: "Frontend and full-stack development" },
+                { k: "Strength", v: "Polished UI and reliable logic" },
+                { k: "Research", v: "Deep learning for real-world problems" },
+                { k: "Currently", v: "BSc (Hons) CS - OGPA 3.89/4.0" },
               ].map((x, idx) => (
                 <motion.div
                   key={x.k}
@@ -107,7 +102,7 @@ export function App() {
         <Section
           id="skills"
           title="SKILLS"
-          subtitle="My core stack for building and shipping products."
+          subtitle="Core tools and technologies I use to build and ship products."
           tone="mid"
         >
           <SkillsGrid />
@@ -116,7 +111,7 @@ export function App() {
         <Section
           id="projects"
           title="PROJECTS"
-          subtitle="Selected work — built like real products."
+          subtitle="Selected work built with real-world constraints."
           tone="deep"
         >
           <ProjectsGrid />
@@ -129,7 +124,7 @@ export function App() {
         <Section
           id="research"
           title="RESEARCH"
-          subtitle="Light highlights — systems + AI interest."
+          subtitle="Focused highlights in AI and systems exploration."
           tone="mid"
         >
           <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
@@ -144,7 +139,7 @@ export function App() {
                   duration: 0.55,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="card card-hover p-6"
+                className="card card-hover p-6 md:col-span-2 md:justify-self-center md:max-w-3xl"
               >
                 <h3 className="text-base font-semibold">{r.title}</h3>
                 <p className="mt-2 text-sm muted">{r.description}</p>
@@ -176,7 +171,7 @@ export function App() {
         <Section
           id="achievements"
           title="ACHIEVEMENTS"
-          subtitle="Consistency, ownership, and impact."
+          subtitle="Hackathons and competitive programming participation."
           tone="mid"
         >
           <AchievementsGrid />
@@ -185,7 +180,7 @@ export function App() {
         <Section
           id="contact"
           title="CONTACT"
-          subtitle="Fastest way to reach me — email + socials."
+          subtitle="Fastest way to reach me - email and socials."
           tone="deep"
         >
           <ContactCard />

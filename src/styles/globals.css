@@ -24,13 +24,13 @@ html {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
   .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur;
+    @apply rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur;
   }
   .card-hover {
-    @apply transition-transform duration-300 will-change-transform hover:-translate-y-1 hover:shadow-glow;
+    @apply transition-transform duration-300 will-change-transform hover:-translate-y-1 hover:shadow-glow hover:bg-white/[0.05];
   }
   .muted {
-    @apply text-white/70;
+    @apply text-white/75;
   }
   .blue-ring {
     box-shadow: 0 0 0 1px rgba(47,124,255,.35), 0 25px 80px rgba(47,124,255,.15);

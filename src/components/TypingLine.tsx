@@ -29,7 +29,7 @@ export function TypingLine({
       <span className="inline-flex h-2 w-2 rounded-full bg-blueglow-500 shadow-glow" />
       <span className="muted">
         {chars.slice(0, i).join("")}
-        <span className={done ? "opacity-0" : "opacity-100"}>▍</span>
+        <span className={done ? "opacity-0" : "opacity-100"}>|</span>
       </span>
     </div>
   );

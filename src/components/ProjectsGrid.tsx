@@ -21,6 +21,8 @@ export function ProjectsGrid() {
       {/* Featured */}
       {PROJECTS.slice(0, 1).map((p) => {
         const a = accentMap[p.accent] ?? accentMap.cyan;
+        const badgeText = p.badge ? `${p.badge} | ${p.year}` : `Featured | ${p.year}`;
+
         return (
           <motion.article
             key={p.title}
@@ -29,7 +31,7 @@ export function ProjectsGrid() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4, rotateX: 1.5, rotateY: -1.5 }}
-            className={`card overflow-hidden md:col-span-12 ring-1 ring-white/10 ${a.glow}`}
+            className={`card group overflow-hidden md:col-span-12 ring-1 ring-white/10 ${a.glow}`}
             style={{ transformStyle: "preserve-3d" as any }}
           >
             <div className="relative aspect-[21/9] overflow-hidden">
@@ -38,19 +40,31 @@ export function ProjectsGrid() {
                 alt={`${p.title} poster`}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-950/75 via-bg-950/10 to-transparent" />
-              <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-xl border px-3 py-1 text-xs font-medium backdrop-blur"
-                   style={{ borderColor: "rgba(255,255,255,.12)", background: "rgba(0,0,0,.25)" }}>
-                <span className={`h-2 w-2 rounded-full ${p.accent === "red" ? "bg-red-400" : "bg-blueglow-400"} `} />
-                Featured • {p.year}
+              <div
+                className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-xl border px-3 py-1 text-xs font-medium backdrop-blur"
+                style={{
+                  borderColor: "rgba(255,255,255,.12)",
+                  background: "rgba(0,0,0,.25)",
+                }}
+              >
+                <span
+                  className={`h-2 w-2 rounded-full ${
+                    p.accent === "red" ? "bg-red-400" : "bg-blueglow-400"
+                  }`}
+                />
+                {badgeText}
               </div>
             </div>
 
             <div className="p-6 sm:p-7">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <h3 className="display-text text-xl font-semibold tracking-tight sm:text-2xl">{p.title}</h3>
+                  <h3 className="display-text text-xl font-semibold tracking-tight sm:text-2xl">
+                    {p.title}
+                  </h3>
                   <p className="mt-2 text-sm text-white/80">{p.tagline}</p>
                 </div>
                 <a
@@ -64,7 +78,10 @@ export function ProjectsGrid() {
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {p.stack.map((s) => (
-                  <span key={s} className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80">
+                  <span
+                    key={s}
+                    className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80"
+                  >
                     {s}
                   </span>
                 ))}
@@ -83,33 +100,52 @@ export function ProjectsGrid() {
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ delay: idx * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              delay: idx * 0.06,
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             whileHover={{ y: -4, rotateX: 1.2, rotateY: 1.2 }}
-            className={`card overflow-hidden md:col-span-6 ring-1 ring-white/10 ${a.glow}`}
+            className={`card group overflow-hidden md:col-span-6 ring-1 ring-white/10 ${a.glow}`}
             style={{ transformStyle: "preserve-3d" as any }}
           >
             <div className="relative aspect-video overflow-hidden">
               <img
                 src={p.image}
                 alt={`${p.title} poster`}
-                className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg-950/75 via-bg-950/10 to-transparent" />
-              <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-xl border px-3 py-1 text-xs font-medium backdrop-blur"
-                   style={{ borderColor: "rgba(255,255,255,.12)", background: "rgba(0,0,0,.25)" }}>
-                <span className={`h-2 w-2 rounded-full ${p.accent === "red" ? "bg-red-400" : "bg-blueglow-400"} `} />
+              <div
+                className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-xl border px-3 py-1 text-xs font-medium backdrop-blur"
+                style={{
+                  borderColor: "rgba(255,255,255,.12)",
+                  background: "rgba(0,0,0,.25)",
+                }}
+              >
+                <span
+                  className={`h-2 w-2 rounded-full ${
+                    p.accent === "red" ? "bg-red-400" : "bg-blueglow-400"
+                  }`}
+                />
                 {p.year}
               </div>
             </div>
 
             <div className="p-6">
-              <h3 className="display-text text-lg font-semibold tracking-tight">{p.title}</h3>
+              <h3 className="display-text text-lg font-semibold tracking-tight">
+                {p.title}
+              </h3>
               <p className="mt-2 text-sm text-white/80">{p.tagline}</p>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {p.stack.slice(0, 4).map((s) => (
-                  <span key={s} className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80">
+                  <span
+                    key={s}
+                    className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80"
+                  >
                     {s}
                   </span>
                 ))}

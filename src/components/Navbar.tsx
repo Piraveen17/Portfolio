@@ -65,7 +65,7 @@ export function Navbar() {
             aria-label="Go to top"
           >
             <span className="text-white/90">{PROFILE.brand}</span>
-            <span className="ml-2 text-xs text-blueglow-400/90">●</span>
+            <span className="ml-2 text-xs text-blueglow-400/90">{">"}</span>
           </button>
 
           <nav className="hidden items-center gap-6 md:flex">
@@ -139,7 +139,7 @@ export function Navbar() {
                   >
                     {s.label}
                   </span>
-                  <span className="text-blueglow-400/80">→</span>
+                  <span className="text-blueglow-400/80">{">"}</span>
                 </button>
               ))}
             </div>

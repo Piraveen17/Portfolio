@@ -1,33 +1,23 @@
 import { motion } from "framer-motion";
-import {
-  Braces,
-  Database,
-  Cpu,
-  Code2,
-  Terminal,
-  Cloud,
-  Shield,
-  Boxes,
-  Frame,
-} from "lucide-react";
+import { Code2, Database, Terminal, Layout, Layers, PenTool } from "lucide-react";
 import { SKILLS } from "../lib/data";
 
 const ICONS: Record<string, any> = {
-  Frontend: Code2,
-  Backend: Braces,
-  "AI / ML": Cpu,
-  Database: Database,
-  Tools: Terminal,
-  Framework: Frame,
+  Programming: Code2,
+  "Web Development": Layout,
+  Frameworks: Layers,
+  Databases: Database,
+  "Tools & IDEs": Terminal,
+  "Editing & Design": PenTool,
 };
 
 const groups = [
-  "Frontend",
-  "Backend",
-  "AI / ML",
-  "Database",
-  "Tools",
-  "Framework",
+  "Programming",
+  "Web Development",
+  "Frameworks",
+  "Databases",
+  "Tools & IDEs",
+  "Editing & Design",
 ] as const;
 
 export function SkillsGrid() {
@@ -35,7 +25,7 @@ export function SkillsGrid() {
     <div className="mx-auto max-w-5xl">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, idx) => {
-          const Icon = ICONS[g] ?? Boxes;
+          const Icon = ICONS[g] ?? Code2;
           const items = SKILLS.filter((s) => s.group === g);
           if (!items.length) return null;
 
@@ -75,7 +65,7 @@ export function SkillsGrid() {
                   >
                     <span>{s.label}</span>
                     <span className="text-blueglow-400/0 transition group-hover:text-blueglow-400/90">
-                      ✦
+                      {">"}
                     </span>
                   </div>
                 ))}
