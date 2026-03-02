@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { PROJECTS } from "../lib/data";
 
 const accentMap: Record<string, { ring: string; glow: string; chip: string }> = {
@@ -67,13 +67,24 @@ export function ProjectsGrid() {
                   </h3>
                   <p className="mt-2 text-sm text-white/80">{p.tagline}</p>
                 </div>
-                <a
-                  href={p.github}
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
-                >
-                  <Github className="h-4 w-4 text-blueglow-400" />
-                  GitHub
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={p.github}
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
+                  >
+                    <Github className="h-4 w-4 text-blueglow-400" />
+                    GitHub
+                  </a>
+                  {p.demo ? (
+                    <a
+                      href={p.demo}
+                      aria-label={`${p.title} live demo`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
+                    >
+                      <ExternalLink className="h-4 w-4 text-blueglow-400" />
+                    </a>
+                  ) : null}
+                </div>
               </div>
 
               <div className="mt-5 flex flex-wrap gap-2">
@@ -152,13 +163,24 @@ export function ProjectsGrid() {
               </div>
 
               <div className="mt-5 flex items-center justify-between">
-                <a
-                  href={p.github}
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
-                >
-                  <Github className="h-4 w-4 text-blueglow-400" />
-                  GitHub
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={p.github}
+                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
+                  >
+                    <Github className="h-4 w-4 text-blueglow-400" />
+                    GitHub
+                  </a>
+                  {p.demo ? (
+                    <a
+                      href={p.demo}
+                      aria-label={`${p.title} live demo`}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/90 transition hover:-translate-y-0.5 hover:shadow-glow"
+                    >
+                      <ExternalLink className="h-4 w-4 text-blueglow-400" />
+                    </a>
+                  ) : null}
+                </div>
                 <span className="text-xs text-white/50">Selected</span>
               </div>
             </div>

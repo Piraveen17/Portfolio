@@ -2,13 +2,14 @@ export const PROFILE = {
   brand: "piraveen",
   name: "Sasikaran Piraveen",
   title: "BSc (Hons) Computer Science (Reading)",
-  tagline: "Frontend and full-stack developer focused on clean UI and reliable systems.",
+  tagline:
+    "Frontend and full-stack developer focused on clean UI and reliable systems.",
   currently:
     "Building production-ready web apps and exploring deep learning for real-world impact.",
   location: "Jaffna District, Northern Province, Sri Lanka",
   email: "piraveen1727@gmail.com",
   github: "https://github.com/Piraveen17",
-  linkedin: "https://www.linkedin.com/in/piraveen-sasikaran-88354a268",
+  linkedin: "https://www.linkedin.com/in/piraveen-sasikaran",
   instagram: "https://www.instagram.com/piraveen.13",
   resumeUrl: "/resume.pdf",
 };
@@ -33,8 +34,7 @@ export const PROJECTS = [
     badge: "Selected",
     tagline:
       "Allowlist-based exam control with secure policy sync and client validation.",
-    description:
-      "Policy sync, secure registration, and API flow validation.",
+    description: "Policy sync, secure registration, and API flow validation.",
     accent: "red",
     stack: ["Next.js", "TypeScript", "MongoDB", "Python", "Postman"],
     github: "https://github.com/Piraveen17",
@@ -51,14 +51,14 @@ export const PROJECTS = [
     accent: "cyan",
     stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui"],
     github: "https://github.com/Piraveen17",
+    demo: "https://ajcar-rental.vercel.app",
     image: "/projects/car-rental-system.svg",
   },
   {
     title: "JeyaFoods - Food Ordering System",
     year: "2026",
     badge: "Selected",
-    tagline:
-      "Responsive menu UI with search and filters for fast discovery.",
+    tagline: "Responsive menu UI with search and filters for fast discovery.",
     description:
       "Reusable components with consistent UI styling across customer pages.",
     accent: "cyan",
@@ -70,10 +70,8 @@ export const PROJECTS = [
     title: "Resource Hub Management System",
     year: "2024",
     badge: "Selected",
-    tagline:
-      "Scheduling calendar UI with booking workflows and validation.",
-    description:
-      "Availability views and create/update/cancel booking flows.",
+    tagline: "Scheduling calendar UI with booking workflows and validation.",
+    description: "Availability views and create/update/cancel booking flows.",
     accent: "red",
     stack: ["HTML", "Tailwind CSS", "JavaScript", "PHP"],
     github: "https://github.com/Piraveen17",
