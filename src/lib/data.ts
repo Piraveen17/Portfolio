@@ -17,6 +17,7 @@ export const PROJECTS = [
   {
     title: "Olirsuite - Company Management System",
     year: "2025",
+    badge: "Featured",
     tagline:
       "Responsive company management UI with finance tracking and API integration.",
     description:
@@ -29,6 +30,7 @@ export const PROJECTS = [
   {
     title: "CheatShield - Exam Environment Control System",
     year: "2026",
+    badge: "Selected",
     tagline:
       "Allowlist-based exam control with secure policy sync and client validation.",
     description:
@@ -41,6 +43,7 @@ export const PROJECTS = [
   {
     title: "Car Rental Management System",
     year: "2025",
+    badge: "Selected",
     tagline:
       "Full-stack booking platform with auth, filters, and availability checks.",
     description:
@@ -53,6 +56,7 @@ export const PROJECTS = [
   {
     title: "JeyaFoods - Food Ordering System",
     year: "2026",
+    badge: "Selected",
     tagline:
       "Responsive menu UI with search and filters for fast discovery.",
     description:
@@ -65,6 +69,7 @@ export const PROJECTS = [
   {
     title: "Resource Hub Management System",
     year: "2024",
+    badge: "Selected",
     tagline:
       "Scheduling calendar UI with booking workflows and validation.",
     description:
