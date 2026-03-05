@@ -121,10 +121,11 @@ export const EXPERIENCE = [
 
 export const RESEARCH = [
   {
-    title: "Enhancing Deepfake Detection",
+    title:
+      "Reliability-Aware Attention Fusion of RGB Semantics and ELA Forensics for Deepfake Detection.",
     description:
-      "Individual research project developing deep learning models to improve deepfake detection accuracy.",
-    tags: ["Deep Learning", "PyTorch", "Python"],
+      "Developing a deep learning approach that fuses RGB visual features with ELA-based forensic features using adaptive attention weighting.",
+    tags: ["Deep Learning", "PyTorch", "Python", "Google Colab"],
   },
 ];
 
