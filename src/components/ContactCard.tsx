@@ -8,8 +8,10 @@ export function ContactCard() {
         <h3 className="text-lg font-semibold">Let's connect</h3>
         <p className="mt-2 muted">
           Looking for a{" "}
-          <span className="text-white/85 font-medium">full-stack internship</span>
-          {" "}where I can ship features end-to-end and learn from real product
+          <span className="text-white/85 font-medium">
+            software engineer internship
+          </span>{" "}
+          where I can ship features end-to-end and learn from real product
           teams.
         </p>
 

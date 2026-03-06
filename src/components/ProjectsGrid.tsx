@@ -2,18 +2,19 @@ import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { PROJECTS } from "../lib/data";
 
-const accentMap: Record<string, { ring: string; glow: string; chip: string }> = {
-  cyan: {
-    ring: "ring-blueglow-500/30",
-    glow: "shadow-glow",
-    chip: "border-blueglow-500/35 bg-blueglow-500/10 text-blueglow-400",
-  },
-  red: {
-    ring: "ring-red-500/25",
-    glow: "shadow-[0_0_0_1px_rgba(239,68,68,.25),_0_18px_60px_rgba(239,68,68,.18)]",
-    chip: "border-red-500/35 bg-red-500/10 text-red-200",
-  },
-};
+const accentMap: Record<string, { ring: string; glow: string; chip: string }> =
+  {
+    cyan: {
+      ring: "ring-blueglow-500/30",
+      glow: "shadow-glow",
+      chip: "border-blueglow-500/35 bg-blueglow-500/10 text-blueglow-400",
+    },
+    red: {
+      ring: "ring-red-500/25",
+      glow: "shadow-[0_0_0_1px_rgba(239,68,68,.25),_0_18px_60px_rgba(239,68,68,.18)]",
+      chip: "border-red-500/35 bg-red-500/10 text-red-200",
+    },
+  };
 
 export function ProjectsGrid() {
   return (
@@ -21,7 +22,9 @@ export function ProjectsGrid() {
       {/* Featured */}
       {PROJECTS.slice(0, 1).map((p) => {
         const a = accentMap[p.accent] ?? accentMap.cyan;
-        const badgeText = p.badge ? `${p.badge} | ${p.year}` : `Featured | ${p.year}`;
+        const badgeText = p.badge
+          ? `${p.badge} | ${p.year}`
+          : `Featured | ${p.year}`;
 
         return (
           <motion.article

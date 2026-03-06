@@ -44,13 +44,13 @@ export function App() {
             >
               <p className="text-sm leading-7 text-white/80">
                 I am a Computer Science undergraduate (BSc Hons, reading) with a
-                strong focus on building clean user interfaces and production-ready
-                systems. I enjoy shipping reliable full-stack features, from UI
-                design to data validation and API integration. Alongside product
-                work, I am interested in deep learning research, especially
-                computer vision topics like deepfake detection. I value clear
-                architecture, thoughtful UX decisions, and performance-aware
-                implementation.
+                strong focus on building clean user interfaces and
+                production-ready systems. I enjoy shipping reliable full-stack
+                features, from UI design to data validation and API integration.
+                Alongside product work, I am interested in deep learning
+                research, especially computer vision topics like deepfake
+                detection. I value clear architecture, thoughtful UX decisions,
+                and performance-aware implementation.
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {[
@@ -115,10 +115,6 @@ export function App() {
           tone="deep"
         >
           <ProjectsGrid />
-          <p className="mt-6 text-center text-xs text-white/50">
-            Replace thumbnails inside{" "}
-            <span className="text-white/70">public/projects/</span>.
-          </p>
         </Section>
 
         <Section

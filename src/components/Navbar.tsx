@@ -115,7 +115,7 @@ export function Navbar() {
       {/* Mobile panel */}
       <div
         className={[
-          "md:hidden transition-all duration-300",
+          "absolute left-0 top-16 z-40 w-full md:hidden transition-all duration-300",
           open
             ? "max-h-[520px] opacity-100"
             : "max-h-0 opacity-0 pointer-events-none",

@@ -87,7 +87,8 @@ export function Hero() {
                 className="mt-4 flex flex-wrap items-center gap-2"
               >
                 <span className="inline-flex items-center gap-2 rounded-full border border-blueglow-500/35 bg-blueglow-500/10 px-3 py-1 text-xs font-medium text-blueglow-300 shadow-glow">
-                  <Sparkles className="h-3.5 w-3.5" /> Available for Internship
+                  <Sparkles className="h-3.5 w-3.5" /> Seeking Software Engineer
+                  Internship
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-white/70 backdrop-blur">
                   <MapPin className="h-3.5 w-3.5 text-blueglow-400" />{" "}
@@ -204,7 +205,7 @@ export function Hero() {
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="rounded-2xl border border-white/10 bg-bg-950/55 p-3 backdrop-blur">
                           <p className="text-sm font-medium text-white/90">
-                            Full-stack - Internship-ready
+                            Software Engineer Intern - Internship-ready
                           </p>
                           <p className="text-sm muted">
                             UI polish - clean architecture - reliable delivery

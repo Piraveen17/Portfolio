@@ -1,7 +1,7 @@
 export const PROFILE = {
   brand: "piraveen",
   name: "Sasikaran Piraveen",
-  title: "BSc (Hons) Computer Science (Reading)",
+  title: "Software Engineer Intern",
   tagline:
     "Frontend and full-stack developer focused on clean UI and reliable systems.",
   currently:
@@ -16,9 +16,23 @@ export const PROFILE = {
 
 export const PROJECTS = [
   {
-    title: "Olirsuite - Company Management System",
+    title: "Car Rental Management System",
     year: "2025",
     badge: "Featured",
+    tagline:
+      "Full-stack booking platform with auth, filters, and availability checks.",
+    description:
+      "Booking validation logic with scalable database design and clean UI.",
+    accent: "cyan",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui"],
+    github: "https://github.com/Piraveen17",
+    demo: "https://ajcar-rental.vercel.app",
+    image: "/projects/car-rental-system.svg",
+  },
+  {
+    title: "Olirsuite - Company Management System",
+    year: "2025",
+    badge: "Selected",
     tagline:
       "Responsive company management UI with finance tracking and API integration.",
     description:
@@ -39,20 +53,6 @@ export const PROJECTS = [
     stack: ["Next.js", "TypeScript", "MongoDB", "Python", "Postman"],
     github: "https://github.com/Piraveen17",
     image: "/projects/cheatshield.svg",
-  },
-  {
-    title: "Car Rental Management System",
-    year: "2025",
-    badge: "Selected",
-    tagline:
-      "Full-stack booking platform with auth, filters, and availability checks.",
-    description:
-      "Booking validation logic with scalable database design and clean UI.",
-    accent: "cyan",
-    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui"],
-    github: "https://github.com/Piraveen17",
-    demo: "https://ajcar-rental.vercel.app",
-    image: "/projects/car-rental-system.svg",
   },
   {
     title: "JeyaFoods - Food Ordering System",
