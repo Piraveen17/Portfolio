@@ -108,9 +108,19 @@ export const SKILLS = [
 
 export const EXPERIENCE = [
   {
+    role: "Practical Assistant, Python Essentials for Problem Solvers",
+    org: "Department of Computer Science, Faculty of Science, University of Jaffna",
+    period: "Present",
+    bullets: [
+      "Supported hands-on Python labs and guided students through exercises.",
+      "Assisted with debugging, troubleshooting, and core programming concepts.",
+      "Helped maintain smooth lab sessions and learner confidence.",
+    ],
+  },
+  {
     role: "Practical Assistant, Python for Problem Solving",
     org: "Department of Computer Science, Faculty of Science, University of Jaffna",
-    period: "2025, 2026",
+    period: "2025",
     bullets: [
       "Supported hands-on Python labs and guided students through exercises.",
       "Assisted with debugging, troubleshooting, and core programming concepts.",
@@ -153,8 +163,7 @@ export const EDUCATION = [
   },
   {
     school: "J/ Hartley College",
-    program:
-      "Physical Science - G.C.E. O/L: 7A, 2B (2017). G.C.E. A/L: A, B, C; Z-score 1.3841 (2020)",
+    program: "Physical Science - [G.C.E. O/L , G.C.E. A/L]",
     period: "Dec 2011 - Oct 2020",
   },
 ];
