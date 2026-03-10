@@ -9,7 +9,7 @@ export const PROFILE = {
   location: "Jaffna District, Northern Province, Sri Lanka",
   email: "piraveen1727@gmail.com",
   github: "https://github.com/Piraveen17",
-  linkedin: "https://www.linkedin.com/in/piraveen-sasikaran",
+  linkedin: "https://www.linkedin.com/in/sasikaran-piraveen",
   instagram: "https://www.instagram.com/piraveen.13",
   resumeUrl: "/resume.pdf",
 };
