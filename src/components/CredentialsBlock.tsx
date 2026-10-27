@@ -1,141 +1,67 @@
-import { motion } from "framer-motion";
-import { BadgeCheck } from "lucide-react";
-import { CERTIFICATIONS, EDUCATION, HIGHLIGHTS, VOLUNTEERING } from "../lib/data";
-import { OrgMark } from "./OrgMark";
+import { ACHIEVEMENTS, CERTIFICATIONS, EDUCATION, HIGHLIGHTS, VOLUNTEERING } from "../lib/data";
 
-function Card({ children }: { children: React.ReactNode }) {
-  return <div className="card card-hover p-6">{children}</div>;
+function Group({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <h3 className="font-mono text-code font-semibold">{title}</h3>
+      <div className="mt-3">{children}</div>
+    </div>
+  );
 }
 
-function SubTitle({ children }: { children: React.ReactNode }) {
+function Row({ left, title, sub }: { left: string; title: string; sub?: string }) {
   return (
-    <h3 className="display-text text-base font-semibold tracking-tight">
-      {children}
-    </h3>
+    <li className="grid grid-cols-[minmax(0,1fr)] gap-1 border-t border-line py-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
+      <p className="font-mono text-label text-mute">{left}</p>
+      <div>
+        <p className="font-semibold leading-6">{title}</p>
+        {sub ? <p className="text-[0.9375rem] leading-6 text-mute">{sub}</p> : null}
+      </div>
+    </li>
   );
 }
 
 export function CredentialsBlock() {
   return (
-    <div className="mx-auto mt-10 max-w-5xl space-y-6">
-      <div className="h-px w-full bg-white/10" />
+    <div className="space-y-10">
+      <Group title="Education">
+        <ul>
+          {EDUCATION.map((e) => (
+            <Row key={e.school} left={e.period} title={e.school} sub={e.program} />
+          ))}
+        </ul>
+        <ul className="mt-2 flex flex-wrap gap-2" aria-label="Academic highlights">
+          {HIGHLIGHTS.map((h) => (
+            <li key={h.label} className="tag">
+              {h.label}: {h.value}
+            </li>
+          ))}
+        </ul>
+      </Group>
 
-      <div className="grid gap-5 lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Card>
-            <SubTitle>Education</SubTitle>
-            <div className="mt-4 space-y-3">
-              {EDUCATION.map((e) => (
-                <div
-                  key={e.school}
-                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"
-                >
-                  <OrgMark org={e.school} />
+      <Group title="Achievements">
+        <ul>
+          {ACHIEVEMENTS.map((a) => (
+            <Row key={a.title} left={a.desc.match(/\((\d{4})\)/)?.[1] ?? ""} title={a.title} sub={a.desc} />
+          ))}
+        </ul>
+      </Group>
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">
-                        {e.school}
-                      </p>
-                      <span className="text-xs text-white/55">{e.period}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-white/75">{e.program}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <Group title="Certifications">
+        <ul>
+          {CERTIFICATIONS.map((c) => (
+            <Row key={`${c.title}-${c.issued}`} left={c.issued} title={c.title} sub={c.issuer} />
+          ))}
+        </ul>
+      </Group>
 
-            <div className="mt-6">
-              <SubTitle>Academic Highlights</SubTitle>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {HIGHLIGHTS.map((item) => (
-                  <span
-                    key={item.label}
-                    className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-white/80"
-                  >
-                    <span className="text-white/90">{item.label}</span> - {item.value}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </Card>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Card>
-            <SubTitle>Certifications</SubTitle>
-            <div className="mt-4 grid gap-3">
-              {CERTIFICATIONS.map((c) => (
-                <div
-                  key={`${c.title}-${c.issued}`}
-                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"
-                >
-                  <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
-                    <BadgeCheck className="h-5 w-5 text-blueglow-400" />
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">
-                        {c.title}
-                      </p>
-                      <span className="text-xs text-white/55">{c.issued}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-white/70">{c.issuer}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Card>
-        </motion.div>
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <Card>
-          <SubTitle>Leadership & Volunteering</SubTitle>
-          <div className="mt-4 grid gap-3">
-            {VOLUNTEERING.map((v) => (
-              <div
-                key={`${v.role}-${v.period}`}
-                className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-4"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div className="flex items-start gap-3">
-                    <OrgMark org={v.org} />
-                    <div>
-                      <p className="text-sm font-semibold text-white/90">
-                        {v.role}
-                      </p>
-                      <p className="text-sm text-white/70">{v.org}</p>
-                    </div>
-                  </div>
-                  <span className="text-xs text-white/55">{v.period}</span>
-                </div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white/75">
-                  {v.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </motion.div>
+      <Group title="Leadership and volunteering">
+        <ul>
+          {VOLUNTEERING.map((v) => (
+            <Row key={`${v.role}-${v.period}`} left={v.period} title={`${v.role}, ${v.org}`} sub={v.bullets.join(" ")} />
+          ))}
+        </ul>
+      </Group>
     </div>
   );
 }

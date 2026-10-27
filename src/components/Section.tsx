@@ -1,15 +1,20 @@
 import type { PropsWithChildren } from "react";
 
-export function Section(props: PropsWithChildren<{ id: string; title: string; subtitle?: string; tone?: "deep" | "mid" | "soft" }>) {
+/** Ledger-style section: sequence number and name in a left gutter, content to the right. */
+export function Section({
+  id,
+  n,
+  title,
+  children,
+}: PropsWithChildren<{ id: string; n: string; title: string }>) {
   return (
-    <section id={props.id} className={`scroll-mt-24 py-16 sm:py-20 section-layer ${props.tone ? `tone-${props.tone}` : "tone-mid"}`}>
-      <div className="container-px">
-        <div className="mx-auto mb-10 max-w-2xl text-center">
-          <div className="mx-auto mb-4 h-[3px] w-12 rounded-full bg-blueglow-500/80 shadow-glow" />
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{props.title}</h2>
-          {props.subtitle ? <p className="mt-3 muted">{props.subtitle}</p> : null}
-        </div>
-        {props.children}
+    <section id={id} aria-labelledby={`${id}-h`} className="scroll-mt-16 border-t border-line py-12 sm:py-16">
+      <div className="wrap grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[9rem_minmax(0,1fr)] lg:grid-cols-[11rem_minmax(0,1fr)]">
+        <h2 id={`${id}-h`} className="h-display text-[1.375rem] leading-8 md:sticky md:top-20 md:self-start">
+          <span className="block font-mono text-label font-normal text-mute">{n}</span>
+          {title}
+        </h2>
+        <div className="min-w-0">{children}</div>
       </div>
     </section>
   );
