@@ -1,17 +1,19 @@
-export function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
-  history.replaceState(null, "", `#${id}`);
-}
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-export function getActiveSection(ids: string[], offset = 120) {
-  const y = window.scrollY + offset;
-  let current = ids[0] ?? "";
-  for (const id of ids) {
-    const el = document.getElementById(id);
-    if (!el) continue;
-    if (el.offsetTop <= y) current = id;
-  }
-  return current;
+/** Scroll to a hash target after navigation, or to the top for a new page. */
+export function ScrollManager() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const id = decodeURIComponent(hash.slice(1));
+      // Wait one frame so the target page has rendered.
+      const t = window.requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ block: "start" });
+      });
+      return () => window.cancelAnimationFrame(t);
+    }
+    window.scrollTo(0, 0);
+  }, [pathname, hash]);
+  return null;
 }
