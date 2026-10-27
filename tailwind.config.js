@@ -4,39 +4,39 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'ui-sans-serif', 'system-ui'],
-        display: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['"IBM Plex Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: [
+          '"IBM Plex Mono"',
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace",
+        ],
       },
       colors: {
-        bg: {
-          950: "#060814",
-          900: "#0a0f24",
-          800: "#111a3a"
-        },
-        blueglow: {
-          500: "#2f7cff",
-          400: "#5aa0ff"
-        }
+        paper: "#ECEFEA",
+        surface: "#F6F8F5",
+        ink: "#16201C",
+        mute: "#4B5A54",
+        line: "#C3CCC5",
+        // Semantic states. Each has a text color, a soft fill, and a console variant.
+        proposed: { DEFAULT: "#7A4E00", soft: "#F2E4BD", console: "#E8B84A" },
+        committed: { DEFAULT: "#0E6B58", soft: "#CFE6DE", console: "#4FD1B0" },
+        sourced: { DEFAULT: "#274A85", soft: "#D3DDEF", console: "#8FB2F2" },
+        rejected: { DEFAULT: "#A32F2A", soft: "#F1D3CF", console: "#F08A82" },
+        // Dark console (system trace)
+        console: { DEFAULT: "#16201C", raised: "#1F2C27", line: "#33443D", text: "#E3EAE5", mute: "#9DB0A6" },
       },
-      boxShadow: {
-        glow: "0 0 0 1px rgba(47,124,255,.25), 0 10px 30px rgba(47,124,255,.18)",
-        glowStrong: "0 0 0 1px rgba(47,124,255,.35), 0 18px 60px rgba(47,124,255,.25)",
+      borderRadius: {
+        sm: "4px",
+        DEFAULT: "6px",
       },
-      keyframes: {
-        shimmer: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" }
-        },
-        floaty: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" }
-        }
+      fontSize: {
+        label: ["0.8125rem", { lineHeight: "1.25rem" }],
+        code: ["0.9375rem", { lineHeight: "1.5rem" }],
+        body: ["1.0625rem", { lineHeight: "1.65rem" }],
+        lead: ["1.25rem", { lineHeight: "1.85rem" }],
       },
-      animation: {
-        shimmer: "shimmer 10s ease-in-out infinite",
-        floaty: "floaty 7s ease-in-out infinite"
-      }
     },
   },
   plugins: [],

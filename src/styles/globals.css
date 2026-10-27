@@ -1,111 +1,99 @@
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/space-grotesk/500.css";
-@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-mono/600.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-paper font-sans text-body text-ink antialiased;
+  min-width: 320px;
 }
 
 ::selection {
-  background: rgba(47, 124, 255, 0.35);
+  background: #16201c;
+  color: #ecefea;
 }
 
-@layer utilities {
-  .container-px {
-    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+/* Visible keyboard focus everywhere. Two rings so it reads on paper and on the dark console. */
+:focus-visible {
+  outline: 2px solid #16201c;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px #ecefea;
+}
+.on-console {
+  scrollbar-color: #4a5f55 #16201c;
+}
+.on-console :focus-visible {
+  outline-color: #e3eae5;
+  box-shadow: 0 0 0 4px #16201c;
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[1100px] px-4 sm:px-6 lg:px-8;
   }
-  .card {
-    @apply rounded-2xl border border-white/10 bg-white/[0.035] backdrop-blur;
+  .prose-measure {
+    max-width: 68ch;
   }
-  .card-hover {
-    @apply transition-transform duration-300 will-change-transform hover:-translate-y-1 hover:shadow-glow hover:bg-white/[0.05];
+  .h-display {
+    @apply font-mono font-semibold tracking-tight;
   }
-  .muted {
-    @apply text-white/75;
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded border px-4 py-2 font-mono text-code font-medium transition-colors;
   }
-  .blue-ring {
-    box-shadow: 0 0 0 1px rgba(47,124,255,.35), 0 25px 80px rgba(47,124,255,.15);
+  .btn-solid {
+    @apply btn border-ink bg-ink text-paper hover:bg-[#2b3a34];
   }
-  .grid-overlay {
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse at top, black 35%, transparent 70%);
+  .btn-line {
+    @apply btn border-ink/55 bg-transparent text-ink hover:border-ink hover:bg-surface;
   }
-  .shimmer-text {
-    background: linear-gradient(90deg, rgba(255,255,255,.92), rgba(47,124,255,.95), rgba(255,255,255,.92));
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .link {
+    @apply underline decoration-ink/40 underline-offset-4 hover:decoration-ink;
+  }
+  .tag {
+    @apply inline-flex items-center rounded-sm border border-line bg-surface px-2 py-0.5 font-mono text-label text-mute;
   }
 }
 
-
-body { font-family: Inter, ui-sans-serif, system-ui; }
-
-@layer utilities {
-  .neon-grid-slow {
-    background-image:
-      linear-gradient(to right, rgba(47,124,255,.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(47,124,255,.08) 1px, transparent 1px);
-    background-size: 64px 64px;
-    opacity: .18;
-    animation: gridShift 18s ease-in-out infinite;
-    mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
-  }
-
-  .depth-vignette {
-    background:
-      radial-gradient(1200px 600px at 50% 0%, rgba(47,124,255,.18), transparent 60%),
-      radial-gradient(900px 500px at 10% 40%, rgba(255,255,255,.06), transparent 65%),
-      radial-gradient(900px 500px at 90% 55%, rgba(47,124,255,.12), transparent 70%);
-  }
-
-  .section-layer {
-    position: relative;
-    isolation: isolate;
-  }
-  .section-layer::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    opacity: 1;
-    background: linear-gradient(to bottom, rgba(255,255,255,.03), rgba(255,255,255,.01));
-  }
-  .section-layer::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -1px;
-    height: 120px;
-    z-index: -1;
-    background: radial-gradient(closest-side at 50% 0%, rgba(47,124,255,.18), transparent 70%);
-    opacity: .55;
-    pointer-events: none;
-  }
-
-  .tone-deep::before { background: linear-gradient(to bottom, rgba(255,255,255,.015), rgba(255,255,255,.005)); }
-  .tone-mid::before  { background: linear-gradient(to bottom, rgba(255,255,255,.03), rgba(255,255,255,.01)); }
-  .tone-soft::before { background: linear-gradient(to bottom, rgba(255,255,255,.04), rgba(255,255,255,.015)); }
-
-  .display-text { font-family: Space Grotesk, Inter, ui-sans-serif, system-ui; }
+/* Semantic state chips: text label always accompanies the color. */
+.state {
+  @apply inline-flex items-center gap-1.5 rounded-sm px-2 py-0.5 font-mono text-label font-semibold;
 }
+.state-proposed { background: #f2e4bd; color: #7a4e00; }
+.state-committed { background: #cfe6de; color: #0e6b58; }
+.state-sourced { background: #d3ddef; color: #274a85; }
+.state-rejected { background: #f1d3cf; color: #a32f2a; }
+.on-console .state-proposed { background: rgba(232, 184, 74, 0.14); color: #e8b84a; }
+.on-console .state-committed { background: rgba(79, 209, 176, 0.14); color: #4fd1b0; }
+.on-console .state-sourced { background: rgba(143, 178, 242, 0.14); color: #8fb2f2; }
+.on-console .state-rejected { background: rgba(240, 138, 130, 0.16); color: #f08a82; }
 
-@keyframes gridShift {
-  0% { background-position: 0px 0px, 0px 0px; }
-  50% { background-position: 26px 18px, 14px 22px; }
-  100% { background-position: 0px 0px, 0px 0px; }
+/* Single deliberate motion: state changes only. */
+@keyframes settle {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+.settle { animation: settle 0.22s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
