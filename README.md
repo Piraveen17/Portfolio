@@ -1,24 +1,27 @@
-# Piraveen Portfolio (Vite + React + TS + Tailwind + Framer Motion)
+# Piraveen Portfolio (Vite + React + TS + Tailwind)
 
-Single-page portfolio with:
-- Dark premium theme + subtle animated neon grid
-- Hybrid typography (Space Grotesk for headings, Inter for body)
-- Depth-layered sections
-- Cyberpunk project posters (generated images)
-- Scroll progress + back-to-top
-- Hero photo: glow ring + subtle parallax tilt
+Portfolio with two interactive architecture walkthroughs.
+
+- `/` home: hero demo ("the latch"), work, experience, research, skills, credentials, contact
+- `/work/intentlatch` WhatsApp order agent: chat and system trace, confirmation gate, 3 scenarios
+- `/work/car-rental` booking race (exclusion constraint + car-row lock) and fleet query assistant (AST-validated read-only SQL)
+
+Design notes: IBM Plex Mono and Sans, light page with a dark console where the system speaks, and four semantic
+colors (proposed, committed, sourced, rejected) that mean the same thing everywhere.
 
 ## Run locally
 ```bash
 npm install
 npm run dev
+npm run build   # tsc -b && vite build
 ```
 
 ## Customize
-Edit:
-- `src/lib/data.ts` (name, links, projects, skills, experience)
+- `src/lib/data.ts`: profile, projects (`featured`, `caseStudyUrl`, `demo`, `github`), skills, experience
+- `src/lib/walkthroughs/`: walkthrough copy and scenarios (typed, no component changes needed)
+- `public/profile.jpg`, `public/resume.pdf`
 
-Replace:
-- `public/profile.jpg`
-- `public/resume.pdf`
-- `public/projects/*.png` (optional — posters are already included)
+Walkthrough data (menu items, prices, order numbers, cars, rows) is sample data.
+
+## Deploy
+`vercel.json` rewrites all paths to `index.html` so deep links such as `/work/car-rental` work.
