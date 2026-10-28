@@ -98,11 +98,6 @@ function FeaturedProject({ p }: { p: Project }) {
       <div className="flex flex-col lg:col-span-7">
         <p className="font-mono text-label text-fg-faint">
           {p.year}
-          {p.note ? (
-            <span className="ml-3 rounded border border-rule-strong px-1.5 py-0.5 text-fg-muted">
-              {p.note}
-            </span>
-          ) : null}
         </p>
         <h3 className="mt-2 text-2xl font-semibold tracking-[-0.015em] text-white">
           {p.title}

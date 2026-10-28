@@ -27,8 +27,6 @@ export type Project = {
   github: string;
   demo?: string;
   walkthrough?: string;
-  image?: string;
-  note?: string;
 };
 
 export const PROJECTS: Project[] = [
@@ -80,7 +78,6 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Piraveen17/car_rental.git",
     demo: "https://ajcar-rental.vercel.app",
     walkthrough: `${CASE_STUDY_PATH}?scenario=car-rental`,
-    image: "/projects/car-rental-system.svg",
   },
   {
     title: "Olirsuite",
@@ -91,7 +88,6 @@ export const PROJECTS: Project[] = [
       "Responsive pages wired to backend APIs, plus debugging and release testing. Group project.",
     stack: ["Next.js", "TypeScript", "shadcn/ui", "MongoDB"],
     github: "https://github.com/ShiyamalanK/olir-suite.git",
-    image: "/projects/olirsuite.svg",
   },
   {
     title: "CheatShield",
@@ -102,7 +98,6 @@ export const PROJECTS: Project[] = [
       "Polling policy sync, symmetric-key client registration with expiry, and API flows tested end to end in Postman. Group project.",
     stack: ["Next.js", "TypeScript", "MongoDB", "Python"],
     github: "https://github.com/Kamalaraj/cheatshield.git",
-    image: "/projects/cheatshield.svg",
   },
   {
     title: "JeyaFoods",
@@ -113,7 +108,6 @@ export const PROJECTS: Project[] = [
       "Reusable menu components shared across the customer pages. Group project.",
     stack: ["Next.js", "TypeScript", "MongoDB"],
     github: "https://github.com/Jeyafoods/jeyafoods_new.git",
-    image: "/projects/jeyafoods.svg",
   },
   {
     title: "Resource Hub",
@@ -125,7 +119,6 @@ export const PROJECTS: Project[] = [
     stack: ["HTML", "Tailwind CSS", "JavaScript", "PHP"],
     github:
       "https://github.com/Group-8-Web-Technology-Project/Resource-Hub-Management.git",
-    image: "/projects/resource-hub.svg",
   },
 ];
 
