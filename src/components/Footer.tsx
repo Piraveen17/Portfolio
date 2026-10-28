@@ -1,52 +1,30 @@
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import { PROFILE } from "../lib/data";
 
+const SOCIALS = [
+  { href: PROFILE.github, label: "GitHub", Icon: Github },
+  { href: PROFILE.linkedin, label: "LinkedIn", Icon: Linkedin },
+  { href: `mailto:${PROFILE.email}`, label: "Email", Icon: Mail },
+  { href: PROFILE.instagram, label: "Instagram", Icon: Instagram },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-white/10 py-10">
-      <div className="container-px">
-        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-          <div className="text-center sm:text-left">
-            <p className="text-sm font-medium text-white/90">
-              Let's build something meaningful.
-            </p>
-            <p className="mt-1 text-xs text-white/55">
-              Copyright {year} {PROFILE.name}
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <a
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-              href={PROFILE.github}
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-              href={PROFILE.linkedin}
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-              href={`mailto:${PROFILE.email}`}
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-            <a
-              className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-              href={PROFILE.instagram}
-              aria-label="Instagram"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
+    <footer className="border-t border-rule py-8">
+      <div className="container-px flex flex-col items-center justify-between gap-5 sm:flex-row">
+        <p className="font-mono text-label text-fg-faint">
+          © {year} {PROFILE.name}
+        </p>
+        <ul className="flex items-center gap-2" aria-label="Profiles">
+          {SOCIALS.map(({ href, label, Icon }) => (
+            <li key={label}>
+              <a className="icon-btn" href={href} aria-label={label}>
+                <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );
