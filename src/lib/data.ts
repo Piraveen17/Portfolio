@@ -13,7 +13,7 @@ export const PROFILE = {
   github: "https://github.com/Piraveen17",
   linkedin: "https://www.linkedin.com/in/sasikaran-piraveen",
   instagram: "https://www.instagram.com/piraveen.13",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/Piraveen-CV.pdf",
 };
 
 export type Project = {
