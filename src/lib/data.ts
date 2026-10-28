@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
       "OpenRouter",
       "WhatsApp Cloud API",
     ],
-    github: "https://github.com/Piraveen17/IntentLatch.git",
+    github: "https://github.com/Piraveen17/IntentLatch",
     walkthrough: `${CASE_STUDY_PATH}?scenario=whatsapp`,
   },
   {
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
       "Gemini API",
       "shadcn/ui",
     ],
-    github: "https://github.com/Piraveen17/car_rental.git",
+    github: "https://github.com/Piraveen17/car_rental",
     demo: "https://ajcar-rental.vercel.app",
     walkthrough: `${CASE_STUDY_PATH}?scenario=car-rental`,
   },
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     description:
       "Responsive pages wired to backend APIs, plus debugging and release testing. Group project.",
     stack: ["Next.js", "TypeScript", "shadcn/ui", "MongoDB"],
-    github: "https://github.com/ShiyamalanK/olir-suite.git",
+    github: "https://github.com/ShiyamalanK/olir-suite",
   },
   {
     title: "CheatShield",
@@ -97,7 +97,7 @@ export const PROJECTS: Project[] = [
     description:
       "Polling policy sync, symmetric-key client registration with expiry, and API flows tested end to end in Postman. Group project.",
     stack: ["Next.js", "TypeScript", "MongoDB", "Python"],
-    github: "https://github.com/Kamalaraj/cheatshield.git",
+    github: "https://github.com/Kamalaraj/cheatshield",
   },
   {
     title: "JeyaFoods",
@@ -107,7 +107,7 @@ export const PROJECTS: Project[] = [
     description:
       "Reusable menu components shared across the customer pages. Group project.",
     stack: ["Next.js", "TypeScript", "MongoDB"],
-    github: "https://github.com/Jeyafoods/jeyafoods_new.git",
+    github: "https://github.com/Jeyafoods/jeyafoods_new",
   },
   {
     title: "Resource Hub",
@@ -118,7 +118,7 @@ export const PROJECTS: Project[] = [
       "Create, update and cancel bookings, with input validation. Group project.",
     stack: ["HTML", "Tailwind CSS", "JavaScript", "PHP"],
     github:
-      "https://github.com/Group-8-Web-Technology-Project/Resource-Hub-Management.git",
+      "https://github.com/Group-8-Web-Technology-Project/Resource-Hub-Management",
   },
 ];
 
