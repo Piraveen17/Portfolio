@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export function TypingLine({
   text,
@@ -9,28 +10,32 @@ export function TypingLine({
   speed?: number;
   align?: "start" | "center";
 }) {
+  const reduced = useReducedMotion();
   const chars = useMemo(() => text.split(""), [text]);
   const [i, setI] = useState(0);
-  const done = i >= chars.length;
+  const shown = reduced ? chars.length : i;
+  const done = shown >= chars.length;
 
   useEffect(() => {
-    if (done) return;
+    if (done || reduced) return;
     const t = window.setTimeout(() => setI((v) => v + 1), speed);
     return () => window.clearTimeout(t);
-  }, [done, speed, i]);
+  }, [done, reduced, speed, i]);
 
   return (
-    <div
+    <p
       className={[
-        "mt-4 flex items-center gap-2 text-sm sm:text-base",
+        "mt-5 flex items-baseline gap-2.5 font-mono text-sm text-fg-muted",
         align === "center" ? "justify-center" : "justify-start",
       ].join(" ")}
     >
-      <span className="inline-flex h-2 w-2 rounded-full bg-blueglow-500 shadow-glow" />
-      <span className="muted">
-        {chars.slice(0, i).join("")}
-        <span className={done ? "opacity-0" : "opacity-100"}>|</span>
+      <span aria-hidden="true" className="relative top-[-1px] inline-flex h-1.5 w-1.5 shrink-0 rounded-full bg-signal" />
+      {/* Screen readers get the full sentence at once */}
+      <span className="sr-only">Currently: {text}</span>
+      <span aria-hidden="true">
+        {chars.slice(0, shown).join("")}
+        <span className={done ? "opacity-0" : "text-signal"}>▍</span>
       </span>
-    </div>
+    </p>
   );
 }

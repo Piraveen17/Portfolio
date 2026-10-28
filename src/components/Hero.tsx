@@ -1,226 +1,152 @@
-import { motion } from "framer-motion";
 import {
   Github,
   Instagram,
   Linkedin,
   Mail,
-  ArrowRight,
   Download,
   MapPin,
-  Sparkles,
 } from "lucide-react";
-import { PROFILE } from "../lib/data";
-import { scrollToId } from "../lib/scroll";
+import { CASE_STUDY_PATH, PROFILE } from "../lib/data";
 import { TypingLine } from "./TypingLine";
 import { TiltCard } from "./TiltCard";
+import { PipelineStrip, type Stage } from "./PipelineStrip";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 14 },
-  show: (d = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: d, duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
+const HERO_STAGES: Stage[] = [
+  {
+    label: "Message in",
+    actor: "input",
+    log: `in       "That's all, place the order"  (signed webhook, deduplicated)`,
+  },
+  {
+    label: "Intent routed",
+    actor: "model",
+    log: "route    classify_intent → order agent",
+  },
+  {
+    label: "Checkout proposed",
+    actor: "model",
+    log: "propose  request_checkout()   # places nothing",
+  },
+  {
+    label: "Cart priced",
+    actor: "code",
+    log: "price    total from menu prices → pending_action(nonce, expiry)",
+  },
+  {
+    label: "Customer confirms",
+    actor: "person",
+    log: "hold     summary + [Confirm] [Edit] [Cancel] → customer taps Confirm",
+  },
+  {
+    label: "Order placed",
+    actor: "code",
+    log: "exec     consume nonce → INSERT order in one transaction",
+  },
+  {
+    label: "Reply sent",
+    actor: "code",
+    log: 'send     "Order {number from database}, total {total from database}"',
+  },
+];
+
+const SOCIALS = [
+  { href: PROFILE.github, label: "GitHub", Icon: Github },
+  { href: PROFILE.linkedin, label: "LinkedIn", Icon: Linkedin },
+  { href: `mailto:${PROFILE.email}`, label: "Email", Icon: Mail },
+  { href: PROFILE.instagram, label: "Instagram", Icon: Instagram },
+];
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-20 sm:pt-24">
-      {/* Hero-only animated background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 neon-grid-slow" />
+    <section
+      id="top"
+      aria-label="Introduction"
+      className="relative pb-6 pt-10 sm:pb-8 sm:pt-16"
+    >
+      <div className="container-px">
+        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-12">
+          <div className="md:col-span-7">
+            <p className="font-mono text-sm text-fg-muted">{PROFILE.title}</p>
 
-        <motion.div
-          className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-blueglow-500/25 blur-3xl"
-          animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -right-28 top-32 h-80 w-80 rounded-full bg-white/10 blur-3xl"
-          animate={{ x: [0, -36, 0], y: [0, 18, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute left-1/2 top-[-120px] h-72 w-72 -translate-x-1/2 rounded-full bg-blueglow-400/15 blur-3xl"
-          animate={{ y: [0, 28, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+            <h1 className="mt-3 text-[clamp(2.5rem,6vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
+              {PROFILE.name}
+            </h1>
 
-      <div className="container-px relative">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.55 }}
-          className="mx-auto max-w-6xl"
-        >
-          <div className="grid items-center gap-10 md:grid-cols-12">
-            <div className="md:col-span-7">
-              <motion.p
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.05}
-                className="muted"
+            <p className="mt-5 max-w-[34ch] text-xl leading-snug text-fg/90 sm:text-[1.375rem]">
+              {PROFILE.tagline}
+            </p>
+
+            <TypingLine text={PROFILE.currently} align="start" />
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <a
+                href={PROFILE.resumeUrl}
+                className="btn-primary w-full sm:w-auto"
               >
-                {PROFILE.title}
-              </motion.p>
-
-              <motion.h1
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.12}
-                className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl display-text"
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download resume
+              </a>
+              <a
+                href={CASE_STUDY_PATH}
+                className="btn-secondary w-full sm:w-auto"
               >
-                <span className="shimmer-text animate-shimmer">
-                  {PROFILE.name}
-                </span>
-              </motion.h1>
-
-              {/* Premium chips row (separate from H1) */}
-              <motion.div
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.17}
-                className="mt-4 flex flex-wrap items-center gap-2"
-              >
-                <span className="inline-flex items-center gap-2 rounded-full border border-blueglow-500/35 bg-blueglow-500/10 px-3 py-1 text-xs font-medium text-blueglow-300 shadow-glow">
-                  <Sparkles className="h-3.5 w-3.5" /> Seeking Software Engineer
-                  Internship
-                </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-white/70 backdrop-blur">
-                  <MapPin className="h-3.5 w-3.5 text-blueglow-400" />{" "}
-                  {PROFILE.location}
-                </span>
-              </motion.div>
-
-              <motion.p
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.2}
-                className="mt-4 text-base sm:text-lg muted"
-              >
-                {PROFILE.tagline}
-              </motion.p>
-
-              <motion.div
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.28}
-              >
-                <TypingLine text={PROFILE.currently} align="start" />
-              </motion.div>
-
-              {/* Full-width CTAs on mobile = premium */}
-              <motion.div
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.34}
-                className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
-              >
-                <a
-                  href={PROFILE.resumeUrl}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blueglow-500/90 px-4 py-2.5 text-sm font-medium text-white shadow-glow transition hover:bg-blueglow-500 hover:shadow-glowStrong sm:w-auto"
-                >
-                  <Download className="h-4 w-4" />
-                  Download Resume
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => scrollToId("projects")}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-white/90 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-glow sm:w-auto"
-                >
-                  View Projects
-                  <ArrowRight className="h-4 w-4 text-blueglow-400" />
-                </button>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                animate="show"
-                variants={fadeUp}
-                custom={0.42}
-                className="mt-6 flex items-center gap-3"
-              >
-                <a
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                  href={PROFILE.github}
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5 text-white/90" />
-                </a>
-                <a
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                  href={PROFILE.linkedin}
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5 text-white/90" />
-                </a>
-                <a
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                  href={`mailto:${PROFILE.email}`}
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5 text-white/90" />
-                </a>
-                <a
-                  className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                  href={PROFILE.instagram}
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5 text-white/90" />
-                </a>
-              </motion.div>
+                See how my agents work
+              </a>
             </div>
 
-            {/* Photo card tuned for mobile */}
-            <div className="md:col-span-5">
-              <div className="mx-auto max-w-[360px] md:max-w-none">
-                <TiltCard>
-                  <motion.div
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.22,
-                      duration: 0.65,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="card card-hover rounded-3xl overflow-hidden relative before:absolute before:-inset-[2px] before:rounded-[26px] before:bg-blueglow-500/30 before:blur-lg before:opacity-70 before:-z-10"
-                  >
-                    <div className="relative aspect-[4/5] w-full">
-                      <img
-                        src="/profile.jpg"
-                        alt="Profile"
-                        className="h-full w-full object-cover opacity-95"
-                        loading="eager"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-bg-950/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="rounded-2xl border border-white/10 bg-bg-950/55 p-3 backdrop-blur">
-                          <p className="text-sm font-medium text-white/90">
-                            Software Engineer Intern - Internship-ready
-                          </p>
-                          <p className="text-sm muted">
-                            UI polish - clean architecture - reliable delivery
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </TiltCard>
-              </div>
-            </div>
+            <ul className="mt-6 flex items-center gap-2" aria-label="Profiles">
+              {SOCIALS.map(({ href, label, Icon }) => (
+                <li key={label}>
+                  <a className="icon-btn" href={href} aria-label={label}>
+                    <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="mt-16 h-px w-full bg-white/10" />
-        </motion.div>
+          <div className="md:col-span-5">
+            <div className="mx-auto max-w-[340px] md:ml-auto md:mr-0 md:max-w-[380px]">
+              <TiltCard maxTilt={3}>
+                <figure className="panel overflow-hidden">
+                  <div className="relative aspect-[4/5] w-full">
+                    <img
+                      src="/profile.jpg"
+                      alt="Portrait of Sasikaran Piraveen"
+                      className="h-full w-full object-cover"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
+                  </div>
+                  <figcaption className="space-y-1.5 border-t border-rule px-4 py-3">
+                    <span className="flex items-center gap-2 text-sm text-fg-muted">
+                      <MapPin
+                        className="h-4 w-4 text-fg-faint"
+                        aria-hidden="true"
+                      />
+                      Jaffna, Sri Lanka
+                    </span>
+                    <span className="flex items-baseline gap-2 font-mono text-label text-fg-muted">
+                      <span
+                        aria-hidden="true"
+                        className="relative top-[-1px] h-1.5 w-1.5 shrink-0 rounded-full bg-signal"
+                      />
+                      Open to Software Engineer roles
+                    </span>
+                  </figcaption>
+                </figure>
+              </TiltCard>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-14 sm:mt-16">
+          <PipelineStrip
+            stages={HERO_STAGES}
+            caption="One request through my WhatsApp order agent"
+          />
+        </div>
       </div>
     </section>
   );
