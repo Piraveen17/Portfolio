@@ -9,6 +9,7 @@ export const PROFILE = {
   currently:
     "Automating ERP processes with LLM agents at David Pieris Holdings.",
   location: "Jaffna District, Northern Province, Sri Lanka",
+  city: "Jaffna, Sri Lanka",
   email: "piraveen1727@gmail.com",
   github: "https://github.com/Piraveen17",
   linkedin: "https://www.linkedin.com/in/sasikaran-piraveen",

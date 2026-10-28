@@ -125,7 +125,7 @@ export function Hero() {
                         className="h-4 w-4 text-fg-faint"
                         aria-hidden="true"
                       />
-                      Jaffna, Sri Lanka
+                      {PROFILE.city}
                     </span>
                     <span className="flex items-baseline gap-2 font-mono text-label text-fg-muted">
                       <span
