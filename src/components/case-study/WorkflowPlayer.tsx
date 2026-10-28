@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../../lib/useReducedMotion";
 import { Pause, Play, RotateCcw, StepForward } from "lucide-react";
 import { SCENARIOS, type ChatMessage, type ScenarioId, type TraceEntry } from "../../lib/caseStudies";
 import { ACTOR_STYLE, ActorLegend } from "../PipelineStrip";

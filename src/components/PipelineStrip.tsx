@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../lib/useReducedMotion";
 import { Pause, Play } from "lucide-react";
 import { cn } from "../lib/cn";
 

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../lib/useReducedMotion";
 
 export function TiltCard({
   children,

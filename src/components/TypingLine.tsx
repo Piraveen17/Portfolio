@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "../lib/useReducedMotion";
 
 export function TypingLine({
   text,
