@@ -1,141 +1,78 @@
-import { motion } from "framer-motion";
-import { BadgeCheck } from "lucide-react";
 import { CERTIFICATIONS, EDUCATION, HIGHLIGHTS, VOLUNTEERING } from "../lib/data";
 import { OrgMark } from "./OrgMark";
 
-function Card({ children }: { children: React.ReactNode }) {
-  return <div className="card card-hover p-6">{children}</div>;
-}
-
 function SubTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="display-text text-base font-semibold tracking-tight">
-      {children}
-    </h3>
-  );
+  return <h3 className="text-base font-semibold text-white">{children}</h3>;
 }
 
 export function CredentialsBlock() {
   return (
-    <div className="mx-auto mt-10 max-w-5xl space-y-6">
-      <div className="h-px w-full bg-white/10" />
-
-      <div className="grid gap-5 lg:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Card>
-            <SubTitle>Education</SubTitle>
-            <div className="mt-4 space-y-3">
-              {EDUCATION.map((e) => (
-                <div
-                  key={e.school}
-                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"
-                >
-                  <OrgMark org={e.school} />
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">
-                        {e.school}
-                      </p>
-                      <span className="text-xs text-white/55">{e.period}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-white/75">{e.program}</p>
-                  </div>
+    <div className="mt-16 grid gap-x-12 gap-y-12 border-t border-rule pt-12 lg:grid-cols-2">
+      <div>
+        <SubTitle>Education</SubTitle>
+        <ul className="mt-4 space-y-5">
+          {EDUCATION.map((e) => (
+            <li key={e.school} className="flex gap-4">
+              <OrgMark org={e.school} />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                  <p className="font-medium text-fg">{e.school}</p>
+                  <span className="font-mono text-label text-fg-faint">{e.period}</span>
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-6">
-              <SubTitle>Academic Highlights</SubTitle>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {HIGHLIGHTS.map((item) => (
-                  <span
-                    key={item.label}
-                    className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-xs text-white/80"
-                  >
-                    <span className="text-white/90">{item.label}</span> - {item.value}
-                  </span>
-                ))}
+                <p className="mt-0.5 text-sm text-fg-muted">{e.program}</p>
               </div>
-            </div>
-          </Card>
-        </motion.div>
+            </li>
+          ))}
+        </ul>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Card>
-            <SubTitle>Certifications</SubTitle>
-            <div className="mt-4 grid gap-3">
-              {CERTIFICATIONS.map((c) => (
-                <div
-                  key={`${c.title}-${c.issued}`}
-                  className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3"
-                >
-                  <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]">
-                    <BadgeCheck className="h-5 w-5 text-blueglow-400" />
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <p className="text-sm font-medium text-white/90">
-                        {c.title}
-                      </p>
-                      <span className="text-xs text-white/55">{c.issued}</span>
-                    </div>
-                    <p className="mt-1 text-sm text-white/70">{c.issuer}</p>
-                  </div>
-                </div>
-              ))}
+        <h4 className="mt-8 text-sm font-medium text-fg">Academic highlights</h4>
+        <dl className="mt-3 divide-y divide-rule border-y border-rule">
+          {HIGHLIGHTS.map((item) => (
+            <div key={item.label} className="flex flex-wrap justify-between gap-x-4 py-2.5 text-sm">
+              <dt className="text-fg-muted">{item.label}</dt>
+              <dd className="font-mono text-[13px] text-fg">{item.value}</dd>
             </div>
-          </Card>
-        </motion.div>
+          ))}
+        </dl>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ delay: 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <Card>
-          <SubTitle>Leadership & Volunteering</SubTitle>
-          <div className="mt-4 grid gap-3">
-            {VOLUNTEERING.map((v) => (
-              <div
-                key={`${v.role}-${v.period}`}
-                className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-4"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                  <div className="flex items-start gap-3">
-                    <OrgMark org={v.org} />
-                    <div>
-                      <p className="text-sm font-semibold text-white/90">
-                        {v.role}
-                      </p>
-                      <p className="text-sm text-white/70">{v.org}</p>
-                    </div>
-                  </div>
-                  <span className="text-xs text-white/55">{v.period}</span>
-                </div>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white/75">
-                  {v.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
+      <div>
+        <SubTitle>Certifications</SubTitle>
+        <ul className="mt-4 divide-y divide-rule border-y border-rule">
+          {CERTIFICATIONS.map((c) => (
+            <li key={`${c.title}-${c.issued}`} className="flex items-baseline justify-between gap-4 py-3">
+              <div className="min-w-0">
+                <p className="text-sm text-fg">{c.title}</p>
+                <p className="mt-0.5 text-sm text-fg-muted">{c.issuer}</p>
               </div>
-            ))}
-          </div>
-        </Card>
-      </motion.div>
+              <span className="shrink-0 font-mono text-label text-fg-faint">{c.issued}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="lg:col-span-2">
+        <SubTitle>Leadership and volunteering</SubTitle>
+        <ul className="mt-4 grid gap-4 md:grid-cols-2">
+          {VOLUNTEERING.map((v) => (
+            <li key={`${v.role}-${v.period}`} className="tile flex gap-4 p-4">
+              <OrgMark org={v.org} />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                  <p className="font-medium text-fg">{v.role}</p>
+                  <span className="font-mono text-label text-fg-faint">{v.period}</span>
+                </div>
+                <p className="text-sm text-fg-muted">{v.org}</p>
+                {v.bullets.map((b) => (
+                  <p key={b} className="mt-2 text-sm text-fg/85">
+                    {b}
+                  </p>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,43 +1,39 @@
-import { motion } from "framer-motion";
 import { EXPERIENCE } from "../lib/data";
+import { cn } from "../lib/cn";
 
 export function Timeline() {
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="relative pl-6">
-        <div className="absolute left-2 top-0 h-full w-px bg-white/10" />
-        <div className="grid gap-5">
-          {EXPERIENCE.map((e, idx) => (
-            <motion.div
-              key={e.role}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: idx * 0.06, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
-              <div className="absolute -left-[2px] top-6 h-3 w-3 rounded-full bg-blueglow-500 shadow-glow" />
-              <div className="card card-hover p-5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div>
-                    <h3 className="text-base font-semibold">{e.role}</h3>
-                    <p className="text-sm text-white/70">{e.org}</p>
-                  </div>
-                  <span className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/70">
-                    {e.period}
-                  </span>
-                </div>
+    <ol aria-label="Work and teaching" className="max-w-4xl">
+      {EXPERIENCE.map((e, idx) => {
+        const last = idx === EXPERIENCE.length - 1;
+        return (
+          <li key={e.role} className="grid md:grid-cols-[8rem_minmax(0,1fr)] md:gap-x-8">
+            <p className="hidden pt-[3px] text-right font-mono text-label text-fg-muted md:block">{e.period}</p>
 
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
-                  {e.bullets.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
+            <div className={cn("relative border-l pl-6 sm:pl-8", last ? "border-transparent pb-0" : "border-rule pb-10")}>
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "absolute -left-[5px] top-[7px] h-[9px] w-[9px] rounded-full border-2 bg-ink-950",
+                  e.current ? "border-signal" : "border-rule-strong"
+                )}
+              />
+              {last ? <span aria-hidden="true" className="absolute left-[-1px] top-0 h-[8px] w-px bg-rule" /> : null}
+
+              <p className="font-mono text-label text-fg-muted md:hidden">{e.period}</p>
+              <h3 className="text-lg font-semibold leading-snug text-white">{e.role}</h3>
+              <p className="mt-0.5 text-sm text-fg-muted">{e.org}</p>
+              <ul className="mt-3 max-w-prose space-y-1.5 text-[15px] text-fg/85">
+                {e.bullets.map((b) => (
+                  <li key={b} className="relative pl-4 before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2 before:bg-fg-faint">
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   );
 }

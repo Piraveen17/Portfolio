@@ -11,98 +11,76 @@ import { AchievementsGrid } from "./components/AchievementsGrid";
 import { CredentialsBlock } from "./components/CredentialsBlock";
 import { ContactCard } from "./components/ContactCard";
 import { Footer } from "./components/Footer";
-import { motion } from "framer-motion";
 import { RESEARCH } from "./lib/data";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
+const ABOUT_FACTS = [
+  { k: "Focus", v: "LLM agents and the backend systems that keep them safe" },
+  { k: "Work", v: "Software Engineering Intern, David Pieris Holdings" },
+  { k: "Research", v: "Deepfake detection with RGB and forensic feature fusion" },
+  { k: "Study", v: "BSc (Hons) Computer Science, University of Jaffna. OGPA 3.85/4.0" },
+];
+
 export function App() {
   return (
-    <div className="min-h-screen bg-bg-950 text-white font-body">
+    <div className="min-h-screen text-fg">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-signal focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-950"
+      >
+        Skip to content
+      </a>
       <ScrollProgress />
       <SiteBackground />
       <Analytics />
       <SpeedInsights />
 
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
 
         <Section
           id="about"
-          title="ABOUT"
-          subtitle="Focused on clean UI, reliable systems, and research-driven curiosity."
+          title="About"
+          subtitle="What I work on, and why."
           tone="soft"
         >
-          <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="card card-hover p-6"
-            >
-              <p className="text-sm leading-7 text-white/80">
-                I am a Computer Science undergraduate (BSc Hons, reading) with a
-                strong focus on building clean user interfaces and
-                production-ready systems. I enjoy shipping reliable full-stack
-                features, from UI design to data validation and API integration.
-                Alongside product work, I am interested in deep learning
-                research, especially computer vision topics like deepfake
-                detection. I value clear architecture, thoughtful UX decisions,
-                and performance-aware implementation.
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="space-y-4 text-lead text-fg/85 md:col-span-7">
+              <p>
+                I'm a Computer Science undergraduate at the University of Jaffna and a
+                Software Engineering Intern working on AI for ERP automation.
               </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {[
-                  "UI/UX",
-                  "Full-stack",
-                  "Deep Learning",
-                  "System Design",
-                  "Frontend",
-                ].map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <div className="grid gap-4">
-              {[
-                { k: "Focus", v: "Frontend and full-stack development" },
-                { k: "Strength", v: "Polished UI and reliable logic" },
-                { k: "Research", v: "Deep learning for real-world problems" },
-                { k: "Currently", v: "BSc (Hons) CS - OGPA 3.89/4.0" },
-              ].map((x, idx) => (
-                <motion.div
-                  key={x.k}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{
-                    delay: idx * 0.06,
-                    duration: 0.55,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="card card-hover p-6"
-                >
-                  <p className="text-xs text-white/55">{x.k}</p>
-                  <p className="mt-1 text-sm font-medium text-white/85">
-                    {x.v}
-                  </p>
-                </motion.div>
-              ))}
+              <p>
+                Most of my work is about one problem: letting a language model help with a
+                real business task without letting it make things up or change data on
+                its own. In my systems the model reads the request and proposes an action.
+                Code checks it, asks a person when something will change, and takes every
+                number from the database.
+              </p>
+              <p>
+                Before AI work I built full-stack web apps with Next.js and PostgreSQL, and
+                I still care about clear interfaces. I'm also researching deepfake
+                detection.
+              </p>
             </div>
+
+            <dl className="grid content-start gap-x-6 gap-y-5 border-t border-rule pt-6 sm:grid-cols-2 md:col-span-5 md:grid-cols-1 md:border-l md:border-t-0 md:pl-8 md:pt-1">
+              {ABOUT_FACTS.map((x) => (
+                <div key={x.k}>
+                  <dt className="label">{x.k}</dt>
+                  <dd className="mt-1 text-fg">{x.v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </Section>
 
         <Section
           id="skills"
-          title="SKILLS"
-          subtitle="Core tools and technologies I use to build and ship products."
+          title="Skills"
+          subtitle="Grouped by what I use them for."
           tone="mid"
         >
           <SkillsGrid />
@@ -110,54 +88,36 @@ export function App() {
 
         <Section
           id="projects"
-          title="PROJECTS"
-          subtitle="Selected work built with real-world constraints."
+          title="Projects"
+          subtitle="The first two have step-by-step walkthroughs of how they work inside."
           tone="deep"
         >
           <ProjectsGrid />
         </Section>
 
-        <Section
-          id="research"
-          title="RESEARCH"
-          subtitle="Focused highlights in AI and systems exploration."
-          tone="mid"
-        >
-          <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
-            {RESEARCH.map((r, idx) => (
-              <motion.div
-                key={r.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{
-                  delay: idx * 0.06,
-                  duration: 0.55,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="card card-hover p-6 md:col-span-2 md:justify-self-center md:max-w-3xl"
-              >
-                <h3 className="text-base font-semibold">{r.title}</h3>
-                <p className="mt-2 text-sm muted">{r.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {r.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-white/80"
-                    >
-                      {t}
-                    </span>
-                  ))}
+        <Section id="research" title="Research" tone="mid">
+          <div className="grid gap-6">
+            {RESEARCH.map((r) => (
+              <article key={r.title} className="grid gap-3 md:grid-cols-[8rem_minmax(0,1fr)] md:gap-x-8">
+                <p className="label md:pt-1.5 md:text-right">
+                  <span aria-hidden="true" className="text-signal">●</span> {r.status}
+                </p>
+                <div>
+                  <h3 className="max-w-[46ch] text-xl font-semibold leading-snug tracking-[-0.01em]">
+                    {r.title}
+                  </h3>
+                  <p className="mt-3 max-w-prose text-fg-muted">{r.description}</p>
+                  <p className="stack-list mt-4">{r.tags.join("  /  ")}</p>
                 </div>
-              </motion.div>
+              </article>
             ))}
           </div>
         </Section>
 
         <Section
           id="experience"
-          title="EXPERIENCE"
-          subtitle="Teaching support, teamwork, and delivery experience."
+          title="Experience"
+          subtitle="Work, teaching, and education."
           tone="soft"
         >
           <Timeline />
@@ -166,8 +126,8 @@ export function App() {
 
         <Section
           id="achievements"
-          title="ACHIEVEMENTS"
-          subtitle="Hackathons and competitive programming participation."
+          title="Achievements"
+          subtitle="Competitive programming and hackathons."
           tone="mid"
         >
           <AchievementsGrid />
@@ -175,15 +135,14 @@ export function App() {
 
         <Section
           id="contact"
-          title="CONTACT"
-          subtitle="Fastest way to reach me - email and socials."
+          title="Contact"
+          subtitle="Email is the fastest way to reach me."
           tone="deep"
         >
           <ContactCard />
         </Section>
-
-        <Footer />
       </main>
+      <Footer />
       <BackToTop />
     </div>
   );
