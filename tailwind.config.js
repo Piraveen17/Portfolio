@@ -4,39 +4,38 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'ui-sans-serif', 'system-ui'],
-        display: ['Space Grotesk', 'Inter', 'ui-sans-serif', 'system-ui'],
+        sans: ['"IBM Plex Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ['"IBM Plex Mono"', "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       colors: {
-        bg: {
-          950: "#060814",
-          900: "#0a0f24",
-          800: "#111a3a"
+        // Surfaces
+        ink: {
+          950: "#060914",
+          900: "#0B1222",
+          850: "#0F182B",
         },
-        blueglow: {
-          500: "#2f7cff",
-          400: "#5aa0ff"
-        }
-      },
-      boxShadow: {
-        glow: "0 0 0 1px rgba(47,124,255,.25), 0 10px 30px rgba(47,124,255,.18)",
-        glowStrong: "0 0 0 1px rgba(47,124,255,.35), 0 18px 60px rgba(47,124,255,.25)",
-      },
-      keyframes: {
-        shimmer: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" }
+        rule: {
+          DEFAULT: "#1C283B",
+          strong: "#2B3B54",
         },
-        floaty: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" }
-        }
+        // Text
+        fg: {
+          DEFAULT: "#E6EDF7",
+          muted: "#9AABC3",
+          faint: "#6B7C96",
+        },
+        // Semantic accents: proposal / interactive, verified by code, waiting on a person
+        signal: "#38BDF8",
+        verified: "#2DD4BF",
+        hold: "#FBBF24",
       },
-      animation: {
-        shimmer: "shimmer 10s ease-in-out infinite",
-        floaty: "floaty 7s ease-in-out infinite"
-      }
+      fontSize: {
+        label: ["0.78125rem", { lineHeight: "1.4" }],
+        lead: ["1.0625rem", { lineHeight: "1.6" }],
+      },
+      maxWidth: {
+        prose: "62ch",
+      },
     },
   },
   plugins: [],

@@ -1,17 +1,15 @@
 export function SiteBackground() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10">
-      {/* Base */}
-      <div className="absolute inset-0 bg-bg-950" />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+      <div className="absolute inset-0 bg-ink-950" />
 
-      {/* Depth lighting (subtle, controlled) */}
-      <div className="absolute inset-0 depth-vignette" />
+      {/* Drafting-surface grid, strongest at the top of the viewport */}
+      <div className="absolute inset-0 dot-grid [mask-image:linear-gradient(to_bottom,black,transparent_70%)]" />
 
-      {/* Animated neon grid */}
-      <div className="absolute inset-0 neon-grid-slow" />
+      {/* A single cool light source from the top-left, kept faint */}
+      <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_12%_-10%,rgba(56,189,248,0.07),transparent_70%)]" />
 
-      {/* Bottom vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg-950/70" />
+      <div className="absolute inset-0 noise opacity-[0.03]" />
     </div>
   );
 }
