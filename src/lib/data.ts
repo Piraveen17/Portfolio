@@ -14,6 +14,9 @@ export const PROFILE = {
   github: "https://github.com/Piraveen17",
   linkedin: "https://www.linkedin.com/in/sasikaran-piraveen",
   instagram: "https://www.instagram.com/piraveen.13",
+  githubHandle: "Piraveen",
+  linkedinHandle: "sasikaran-piraveen",
+  instagramHandle: "piraveen",
   resumeUrl: "/Piraveen-CV.pdf",
 };
 

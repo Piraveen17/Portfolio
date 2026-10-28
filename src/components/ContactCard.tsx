@@ -3,17 +3,17 @@ import { Check, Copy, Github, Instagram, Linkedin, MapPin } from "lucide-react";
 import { PROFILE } from "../lib/data";
 
 const PROFILES = [
-  { href: PROFILE.github, label: "GitHub", handle: "Piraveen", Icon: Github },
+  { href: PROFILE.github, label: "GitHub", handle: PROFILE.githubHandle, Icon: Github },
   {
     href: PROFILE.linkedin,
     label: "LinkedIn",
-    handle: "sasikaran-piraveen",
+    handle: PROFILE.linkedinHandle,
     Icon: Linkedin,
   },
   {
     href: PROFILE.instagram,
     label: "Instagram",
-    handle: "piraveen",
+    handle: PROFILE.instagramHandle,
     Icon: Instagram,
   },
 ];
