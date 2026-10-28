@@ -82,10 +82,6 @@ body {
   .btn-secondary {
     @apply btn border border-rule-strong bg-ink-900 text-fg hover:border-signal/60 hover:text-white;
   }
-  .btn-ghost {
-    @apply btn px-3 text-fg-muted hover:text-fg;
-  }
-
   .icon-btn {
     @apply inline-flex h-10 w-10 items-center justify-center rounded-md border border-rule text-fg-muted transition-colors duration-150 hover:border-rule-strong hover:text-fg;
   }
