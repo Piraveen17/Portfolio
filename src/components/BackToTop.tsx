@@ -18,13 +18,13 @@ export function BackToTop() {
       onClick={() => scrollToId("top")}
       className={[
         "fixed bottom-6 right-6 z-40",
-        "rounded-xl border border-white/10 bg-white/[0.06] p-3 backdrop-blur",
-        "transition-all duration-300 hover:-translate-y-1 hover:shadow-glow",
-        show ? "opacity-100" : "pointer-events-none opacity-0 translate-y-2",
+        "icon-btn bg-ink-900/90 backdrop-blur",
+        "transition-[opacity,transform] duration-300",
+        show ? "opacity-100" : "pointer-events-none invisible translate-y-2 opacity-0",
       ].join(" ")}
       aria-label="Back to top"
     >
-      <ArrowUp className="h-5 w-5 text-white/90" />
+      <ArrowUp className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 }

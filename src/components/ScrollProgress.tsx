@@ -17,7 +17,7 @@ export function ScrollProgress() {
   return (
     <div className="pointer-events-none fixed left-0 top-0 z-50 h-[2px] w-full bg-transparent">
       <div
-        className="h-full bg-blueglow-500/90 shadow-glow"
+        className="h-full bg-signal"
         style={{ width: `${p}%` }}
       />
     </div>

@@ -21,169 +21,174 @@ const SECTIONS = [
   { id: "contact", label: "Contact" },
 ];
 
+const SOCIALS = [
+  { href: PROFILE.github, label: "GitHub", Icon: Github },
+  { href: PROFILE.linkedin, label: "LinkedIn", Icon: Linkedin },
+  { href: `mailto:${PROFILE.email}`, label: "Email", Icon: Mail },
+  { href: PROFILE.instagram, label: "Instagram", Icon: Instagram },
+];
+
 export function Navbar() {
+  const isHome = window.location.pathname.replace(/\/+$/, "") === "";
   const ids = useMemo(() => SECTIONS.map((s) => s.id), []);
   const [solid, setSolid] = useState(false);
-  const [active, setActive] = useState(ids[0]);
+  const [active, setActive] = useState(isHome ? ids[0] : "");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       setSolid(window.scrollY > 24);
-      setActive(getActiveSection(ids, 140));
+      if (isHome) setActive(getActiveSection(ids, 140));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [ids]);
+  }, [ids, isHome]);
+
+  // Arriving from another page with /#section: scroll once the section exists.
+  useEffect(() => {
+    if (!isHome) return;
+    const id = window.location.hash.replace("#", "");
+    if (ids.includes(id)) {
+      requestAnimationFrame(() =>
+        document.getElementById(id)?.scrollIntoView({ block: "start" })
+      );
+    }
+  }, [ids, isHome]);
 
   useEffect(() => {
-    const onHash = () => {
-      const id = window.location.hash.replace("#", "");
-      if (ids.includes(id)) setActive(id);
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
     };
-    window.addEventListener("hashchange", onHash);
-    onHash();
-    return () => window.removeEventListener("hashchange", onHash);
-  }, [ids]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const go = (id: string) => (e: React.MouseEvent) => {
+    if (!isHome) return; // let the browser navigate to /#id
+    e.preventDefault();
+    scrollToId(id);
+    setOpen(false);
+  };
 
   return (
-    <header className="fixed sticky left-0 top-0 z-40 w-full">
+    <header className="sticky top-0 z-40 w-full">
       <div
         className={[
-          "transition-all duration-300",
-          solid
-            ? "border-b border-white/10 bg-bg-950/65 backdrop-blur"
-            : "bg-transparent",
+          "border-b transition-colors duration-300",
+          solid || open
+            ? "border-rule bg-ink-950/85 backdrop-blur-md"
+            : "border-transparent bg-transparent",
         ].join(" ")}
       >
         <div className="container-px flex h-16 items-center justify-between">
-          <button
-            type="button"
-            onClick={() => scrollToId("top")}
-            className="font-semibold tracking-wide text-white/90 hover:text-white"
-            aria-label="Go to top"
+          <a
+            href={isHome ? "#top" : "/"}
+            onClick={go("top")}
+            className="font-mono text-sm font-medium text-fg hover:text-white"
+            aria-label={isHome ? "Back to top" : "Home"}
           >
-            <span className="text-white/90">{PROFILE.brand}</span>
-            <span className="ml-2 text-xs text-blueglow-400/90">{">"}</span>
-          </button>
+            {PROFILE.brand}
+            <span className="text-signal">_</span>
+          </a>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav
+            aria-label="Sections"
+            className="hidden items-center gap-6 md:flex"
+          >
             {SECTIONS.map((s) => (
-              <button
+              <a
                 key={s.id}
-                type="button"
-                onClick={() => scrollToId(s.id)}
+                href={isHome ? `#${s.id}` : `/#${s.id}`}
+                onClick={go(s.id)}
+                aria-current={active === s.id ? "location" : undefined}
                 className={[
-                  "text-sm transition-colors",
-                  active === s.id
-                    ? "text-white"
-                    : "text-white/70 hover:text-white",
+                  "relative py-1 text-sm transition-colors",
+                  active === s.id ? "text-fg" : "text-fg-muted hover:text-fg",
                 ].join(" ")}
               >
-                <span className="relative">
-                  {s.label}
-                  {active === s.id ? (
-                    <span className="absolute -bottom-2 left-0 h-[2px] w-full rounded-full bg-blueglow-500/90 shadow-glow" />
-                  ) : null}
-                </span>
-              </button>
+                {s.label}
+                <span
+                  aria-hidden="true"
+                  className={[
+                    "absolute -bottom-[3px] left-0 h-[2px] w-full origin-left bg-signal transition-transform duration-300",
+                    active === s.id ? "scale-x-100" : "scale-x-0",
+                  ].join(" ")}
+                />
+              </a>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <a
-              href={PROFILE.resumeUrl}
-              className="inline-flex items-center gap-2 rounded-xl bg-blueglow-500/90 px-3 py-2 text-sm font-medium text-white shadow-glow transition hover:bg-blueglow-500 hover:shadow-glowStrong"
-            >
-              <Download className="h-4 w-4" />
-              Resume
-            </a>
-          </div>
+          <a
+            href={PROFILE.resumeUrl}
+            className="btn-secondary hidden min-h-[36px] px-3 md:inline-flex"
+          >
+            <Download className="h-4 w-4" aria-hidden="true" />
+            Resume
+          </a>
 
           <button
             type="button"
-            className="md:hidden rounded-xl border border-white/10 bg-white/[0.04] p-2 backdrop-blur"
+            className="icon-btn md:hidden"
             onClick={() => setOpen((v) => !v)}
-            aria-label="Open menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile panel */}
       <div
-        className={[
-          "absolute left-0 top-16 z-40 w-full md:hidden transition-all duration-300",
-          open
-            ? "max-h-[520px] opacity-100"
-            : "max-h-0 opacity-0 pointer-events-none",
-        ].join(" ")}
+        id="mobile-menu"
+        hidden={!open}
+        className="absolute left-0 top-16 w-full border-b border-rule bg-ink-950/95 backdrop-blur-md md:hidden"
       >
-        <div className="border-b border-white/10 bg-bg-950/80 backdrop-blur">
-          <div className="container-px py-4">
-            <div className="grid gap-2">
-              {SECTIONS.map((s) => (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => {
-                    scrollToId(s.id);
-                    setOpen(false);
-                  }}
-                  className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-left"
+        <nav aria-label="Sections" className="container-px py-3">
+          <ul className="divide-y divide-rule">
+            {SECTIONS.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={isHome ? `#${s.id}` : `/#${s.id}`}
+                  onClick={go(s.id)}
+                  aria-current={active === s.id ? "location" : undefined}
+                  className={[
+                    "flex items-center gap-3 py-3 text-base",
+                    active === s.id ? "text-fg" : "text-fg-muted",
+                  ].join(" ")}
                 >
                   <span
-                    className={active === s.id ? "text-white" : "text-white/80"}
-                  >
-                    {s.label}
-                  </span>
-                  <span className="text-blueglow-400/80">{">"}</span>
-                </button>
-              ))}
-            </div>
+                    aria-hidden="true"
+                    className={[
+                      "h-1.5 w-1.5 rounded-full",
+                      active === s.id ? "bg-signal" : "bg-transparent",
+                    ].join(" ")}
+                  />
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-            <div className="mt-4 flex flex-wrap items-center gap-2">
+          <div className="mt-3 flex items-center gap-2 border-t border-rule pt-4 pb-2">
+            {SOCIALS.map(({ href, label, Icon }) => (
               <a
-                href={PROFILE.github}
-                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                aria-label="GitHub"
+                key={label}
+                href={href}
+                className="icon-btn"
+                aria-label={label}
               >
-                <Github className="h-5 w-5" />
+                <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
               </a>
-              <a
-                href={PROFILE.linkedin}
-                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href={`mailto:${PROFILE.email}`}
-                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-              <a
-                href={PROFILE.instagram}
-                className="rounded-xl border border-white/10 bg-white/[0.03] p-2 hover:shadow-glow"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-
-              <a
-                href={PROFILE.resumeUrl}
-                className="ml-auto inline-flex items-center gap-2 rounded-xl bg-blueglow-500/90 px-3 py-2 text-sm font-medium text-white shadow-glow transition hover:bg-blueglow-500 hover:shadow-glowStrong"
-              >
-                <Download className="h-4 w-4" />
-                Resume
-              </a>
-            </div>
+            ))}
+            <a href={PROFILE.resumeUrl} className="btn-primary ml-auto">
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Résumé
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );
